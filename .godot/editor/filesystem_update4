@@ -5,8 +5,10 @@ res://scenes/ability/sword_ability/sword_ability.tscn
 res://scenes/component/hitbox_component.tscn
 res://scenes/game_object/basic_enemy/basic_enemy.tscn
 res://scenes/component/hurtbox_component.tscn
-res://scenes/component/hitbox_component.gd
-res://scenes/ability/sword_ability_controller/sword_ability_controller.gd
-res://scenes/ability/sword_ability/sword_ability.gd
 res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn
 res://scenes/ui/experiance_bar.tscn
+res://scenes/manager/experiance_manager.tscn
+res://scenes/game_object/experiance_vial/experiance_vial.gd
+res://scenes/autoload/game_events.gd
+res://scenes/manager/experience_manager.tscn
+res://scenes/ui/experience_bar.tscn
