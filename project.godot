@@ -32,7 +32,7 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://assets/": "orange",
 "res://resources/": "yellow",
-"res://scenes/": "green"
+"res://scenes/": "teal"
 }
 
 [input]
@@ -67,8 +67,7 @@ move_left={
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
-2d_physics/layer_4="EnemyCollision"
-2d_physics/layer_5="PlayerPickup"
+2d_physics/snap/snap_2d_transforms_to_pixel=true
 
 [rendering]
 
