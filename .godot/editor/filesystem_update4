@@ -12,3 +12,8 @@ res://scenes/game_object/experiance_vial/experiance_vial.gd
 res://scenes/autoload/game_events.gd
 res://scenes/manager/experience_manager.tscn
 res://scenes/ui/experience_bar.tscn
+res://resources/upgrades/ability_upgrade.gd
+res://resources/upgrades/sword_rate.tres
+res://scenes/manager/upgrade_manager.tscn
+res://scenes/manager/upgrade_manager.gd
+res://scenes/manager/experience_manager.gd
