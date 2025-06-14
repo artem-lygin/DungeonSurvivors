@@ -1,6 +1,6 @@
 extends Resource
 class_name AbilityUpgrade
 
-@export var res_id: String
-@export var res_name: String
-@export_multiline var res_description: String
+@export var upgrade_id: String
+@export var upgrade_name: String
+@export_multiline var upgrade_description: String

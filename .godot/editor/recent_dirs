@@ -1,7 +1,7 @@
+res://scenes/ui
 res://scenes/manager
 res://resources/upgrades
 res://resources/upgrades/
-res://scenes/ui
 res://scenes/autoload
 res://scenes/component
 res://scenes/ability/sword_ability_controller
