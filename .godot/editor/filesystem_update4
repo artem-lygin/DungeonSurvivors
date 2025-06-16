@@ -6,3 +6,7 @@ res://scenes/manager/upgrade_manager.gd
 res://scenes/ability/sword_ability_controller/sword_ability_controller.gd
 res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn
 res://scenes/main/main.tscn
+res://scenes/component/vial_drop_component.tscn
+res://scenes/manager/enemy_manager.gd
+res://scenes/component/vial_drop_component.gd
+res://scenes/game_object/player/player.tscn
