@@ -1,3 +1,6 @@
+PointLight2D
+TileMapLayer
+Node2D
 MarginContainer
 HBoxContainer
 Button
@@ -9,6 +12,4 @@ ProgressBar
 Timer
 CollisionShape2D
 Area2D
-Node2D
 Node
-Sprite2D

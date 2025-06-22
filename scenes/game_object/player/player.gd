@@ -3,10 +3,10 @@ extends CharacterBody2D
 const MAX_SPEED = 125
 const ACCELERATION_SMOOTHING: int = 25
 
-@onready var damage_interval_timer = $DamageIntervalTimer
-@onready var health_component = $HealthComponent
-@onready var enemies_collision_area = $CollisionArea2D
-@onready var health_bar = $HealthBar #progressbar
+@onready var damage_interval_timer: Timer = $%DamageIntervalTimer
+@onready var health_component: Node = $%HealthComponent
+@onready var enemies_collision_area: Area2D = $%EnemiesCollisionArea2D
+@onready var health_bar: ProgressBar = $%HealthBar #progressbar
 
 var number_colliding_bodies: int = 0
 
@@ -45,12 +45,12 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
 
-func on_body_entered(other_body: Node2D):
+func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
 	
 	
-func on_body_exited(other_body: Node2D):
+func on_body_exited(_other_body: Node2D):
 	number_colliding_bodies -= 1
 	
 	

@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dea1g5jmvjlp"]
 
-[ext_resource type="Script" uid="uid://dxboyitski1jl" path="res://scenes/ui/victory_screen.gd" id="1_dtet5"]
+[ext_resource type="Script" uid="uid://dxboyitski1jl" path="res://scenes/ui/round_end_screen.gd" id="1_gkmea"]
 
-[node name="VictoryScreen" type="CanvasLayer"]
+[node name="RoundEndScreen" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_dtet5")
+script = ExtResource("1_gkmea")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -33,13 +33,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "Victory!"
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "You won this round"
