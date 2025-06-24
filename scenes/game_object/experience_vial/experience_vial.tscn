@@ -1,13 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6m01wrbkaoxs"]
+[gd_scene load_steps=10 format=3 uid="uid://c6m01wrbkaoxs"]
 
 [ext_resource type="Script" uid="uid://bsw5hj85hnpns" path="res://scenes/game_object/experience_vial/experience_vial.gd" id="1_634ag"]
 [ext_resource type="Texture2D" uid="uid://c4e54j4adv3qn" path="res://scenes/game_object/experience_vial/experience_vial.png" id="1_r4b2u"]
 
+[sub_resource type="Animation" id="Animation_orspf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+
+[sub_resource type="Animation" id="Animation_jmuu1"]
+resource_name = "floating_vial"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.8, 0.5, 0.8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0himn"]
+_data = {
+&"RESET": SubResource("Animation_orspf"),
+&"floating_vial": SubResource("Animation_jmuu1")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_634ag"]
 radius = 16.0
 
+[sub_resource type="Curve" id="Curve_jmuu1"]
+_data = [Vector2(0, 0.849071), 0.0, 0.0, 0, 0, Vector2(0.434944, 0.496904), -1.61248, -1.61248, 0, 0, Vector2(0.992565, 0), -0.0314928, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_jmuu1"]
+offsets = PackedFloat32Array(0, 0.267206, 0.54251, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.65587, 0.65587, 0.65587, 1, 0.340081, 0.340081, 0.340081, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_orspf"]
+gradient = SubResource("Gradient_jmuu1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+
 [node name="ExperianceVial" type="Node2D"]
 script = ExtResource("1_634ag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0himn")
+}
+autoplay = "floating_vial"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -18,3 +100,54 @@ shape = SubResource("CircleShape2D_634ag")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_r4b2u")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
+visible = false
+position = Vector2(0, 1)
+amount = 800
+lifetime = 2.0
+randomness = 1.0
+lifetime_randomness = 0.52
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+angular_velocity_min = 25.0
+angular_velocity_max = 160.0
+linear_accel_min = 1.0
+linear_accel_max = 10.0
+damping_max = 24.0
+angle_min = 381.6
+angle_max = 418.5
+scale_amount_curve = SubResource("Curve_jmuu1")
+color = Color(0, 0.839216, 1, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(0, 6)
+lifetime = 2.0
+randomness = 1.0
+lifetime_randomness = 0.52
+emission_shape = 3
+emission_rect_extents = Vector2(12, 6)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+angular_velocity_min = 25.0
+angular_velocity_max = 160.0
+linear_accel_min = 1.0
+linear_accel_max = 10.0
+damping_max = 24.0
+angle_min = 381.6
+angle_max = 418.5
+scale_amount_curve = SubResource("Curve_jmuu1")
+color = Color(0, 0.839216, 1, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.90625, 0.453125)
+color = Color(0, 0.694118, 0.878431, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_orspf")

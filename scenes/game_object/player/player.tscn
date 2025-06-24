@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=11 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://qtwxx6cwvifg" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
+[ext_resource type="Texture2D" uid="uid://msiifb5fyob6" path="res://assets/environment/player-light-texture.png" id="4_tj6oj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -28,22 +29,13 @@ corner_detail = 4
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3670"]
-radius = 32.0
+radius = 37.4833
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ss5pk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tj6oj"]
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
 radius = 6.0
-
-[sub_resource type="Gradient" id="Gradient_a8run"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ss5pk"]
-gradient = SubResource("Gradient_a8run")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
@@ -64,6 +56,7 @@ one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+light_mask = 2
 custom_minimum_size = Vector2(32, 4)
 offset_left = -16.0
 offset_top = -22.0
@@ -84,6 +77,8 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
+position = Vector2(0, 3)
+scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_s3670")
 
 [node name="EnemiesCollisionArea2D" type="Area2D" parent="."]
@@ -93,18 +88,22 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesCollisionArea2D"]
 position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_ss5pk")
+shape = SubResource("CircleShape2D_tj6oj")
+
+[node name="PlayerPointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.91644, 0.752752, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.152941)
+shadow_filter = 1
+shadow_filter_smooth = 8.0
+texture = ExtResource("4_tj6oj")
+texture_scale = 0.75
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 2
 texture = ExtResource("1_8afob")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_dovo2")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(2.625, 1.23047)
-energy = 0.5
-texture = SubResource("GradientTexture2D_ss5pk")

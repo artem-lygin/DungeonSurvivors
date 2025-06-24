@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://oi7cn7ov62qr"]
+[gd_scene load_steps=10 format=3 uid="uid://oi7cn7ov62qr"]
 
 [ext_resource type="Script" uid="uid://bnm55wxvhb3r4" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gxg7h"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_isd1k"]
@@ -8,6 +8,12 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq7hi"]
 radius = 12.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_elloc"]
+blend_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_elloc"]
+polygon = PackedVector2Array(-5, -10, -8, -8, -8, -3, -7, 0, -3, 0, -3, 3, -2, 4, 4, 4, 7, 2, 7, 0, 8, 0, 8, -4, 3, -12, -3, -12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qrggj"]
 radius = 6.0
@@ -31,8 +37,14 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_bq7hi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
 texture = ExtResource("2_xrbw7")
 offset = Vector2(0, -4)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_elloc")
+occluder = SubResource("OccluderPolygon2D_elloc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

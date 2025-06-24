@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const MAX_SPEED = 125
 const ACCELERATION_SMOOTHING: int = 25
+const ISO_RATIO: float = .5
 
 @onready var damage_interval_timer: Timer = $%DamageIntervalTimer
 @onready var health_component: Node = $%HealthComponent
@@ -20,8 +21,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var movemrnt_vector = get_movement_vector()
-	var direction = movemrnt_vector.normalized()
+	var movement_vector = get_movement_vector()
+	var direction = movement_vector.normalized()
 	var target_velocity = direction * MAX_SPEED
 	
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	return Vector2(x_movement, y_movement)
+	return Vector2(x_movement, y_movement * ISO_RATIO)
 
 
 func check_deal_damage():
