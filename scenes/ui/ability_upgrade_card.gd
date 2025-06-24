@@ -10,12 +10,12 @@ func _ready() -> void:
 	gui_input.connect(on_gui_input)
 
 
-func on_gui_input(event: InputEvent):
+func on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("lmb_click"):
 		selected.emit()
 
 
-func set_ability_upgrade(upgrade: AbilityUpgrade):
+func set_ability_upgrade(upgrade: AbilityUpgrade) -> void:
 	name_label.text = upgrade.upgrade_name
 	description_label.text = upgrade.upgrade_description
 	

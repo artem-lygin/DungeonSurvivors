@@ -1,6 +1,6 @@
 extends Camera2D
 
-var target_position = Vector2.ZERO
+var target_position: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,8 +13,8 @@ func _process(_delta: float) -> void:
 	global_position = target_position
 
 
-func acquire_target():
-	var player_node = get_tree().get_nodes_in_group("player")
+func acquire_target() -> void:
+	var player_node: Array = get_tree().get_nodes_in_group("player")
 	if player_node.size() > 0:
-		var player = player_node[0] as Node2D
+		var player: Node2D = player_node[0] as Node2D
 		target_position = player.global_position

@@ -14,7 +14,7 @@ func _ready() -> void:
 	arena_timer.timeout.connect(on_arena_timer_timeout)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Managing arena difficulty
 	var next_time_target: float = arena_timer.wait_time - ((arena_difficulty+1) * DIFFICULTY_INTERVAL)
 	if arena_timer.time_left <= next_time_target:
@@ -23,11 +23,11 @@ func _process(delta: float) -> void:
 		print("😓 Arena Difficulty is ", arena_difficulty)
 
 
-func get_time_elapsed():
+func get_time_elapsed() -> float:
 	# return arena_timer.wait_time - arena_timer.time_left # This used in the course
 	return arena_timer.time_left # Returns countdown instead of countup
 
 
-func on_arena_timer_timeout():
+func on_arena_timer_timeout() -> void:
 	var round_end_screen_instance: Node = round_end_screen_scene.instantiate()
 	add_child(round_end_screen_instance)

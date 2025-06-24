@@ -5,8 +5,8 @@
 
 [node name="SwordAbilityController" type="Node"]
 script = ExtResource("1_e8bxv")
-sword_ability = ExtResource("2_rfe3v")
+sword_ability_scene = ExtResource("2_rfe3v")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SwordAbilityTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true

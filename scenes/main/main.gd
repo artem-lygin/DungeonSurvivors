@@ -8,7 +8,7 @@ func _ready() -> void:
 	player_scene.health_component.died.connect(_on_player_death)
 	
 	
-func _on_player_death():
-	var round_end_screen_instance = round_end_screen.instantiate()
+func _on_player_death() -> void:
+	var round_end_screen_instance: Node = round_end_screen.instantiate()
 	add_child(round_end_screen_instance)
 	round_end_screen_instance.set_defeat()

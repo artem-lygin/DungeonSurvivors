@@ -9,16 +9,17 @@ func _ready() -> void:
 	(health_component as HealthComponent).died.connect(on_died)
 	
 
-func on_died():
+func on_died() -> void:
 	if randf() > drop_persentage:
 		return
 	
 	if vial_scene == null: return
 	if not owner is Node2D: return
 		
-	var spawn_position = (owner as Node2D).global_position
-	var vial_instance = vial_scene.instantiate() as Node2D
+	var spawn_position: Vector2 = (owner as Node2D).global_position
+	var vial_instance: Node2D = vial_scene.instantiate() as Node2D
 	
+	@warning_ignore("untyped_declaration")
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer == null: return
 	
