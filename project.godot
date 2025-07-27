@@ -31,6 +31,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -74,6 +78,7 @@ lmb_click={
 
 [layer_names]
 
+2d_render/layer_1="Floor"
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"

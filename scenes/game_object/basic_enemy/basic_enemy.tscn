@@ -13,7 +13,8 @@ radius = 12.0
 blend_mode = 1
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_elloc"]
-polygon = PackedVector2Array(-5, -10, -8, -8, -8, -3, -7, 0, -3, 0, -3, 3, -2, 4, 4, 4, 7, 2, 7, 0, 8, 0, 8, -4, 3, -12, -3, -12)
+cull_mode = 1
+polygon = PackedVector2Array(-4, -11, -7, -8, -7, -5, -6, -2, -2, -2, -2, 1, -1, 2, 3, 2, 4, 1, 5, 1, 6, 0, 6, -1, 7, -2, 7, -4, 4, -10, 2, -12, -2, -12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qrggj"]
 radius = 6.0
@@ -37,14 +38,15 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_bq7hi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 2
 texture = ExtResource("2_xrbw7")
 offset = Vector2(0, -4)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_elloc")
+position = Vector2(0, 1)
 occluder = SubResource("OccluderPolygon2D_elloc")
+sdf_collision = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

@@ -150,4 +150,6 @@ position = Vector2(0, 10)
 scale = Vector2(0.90625, 0.453125)
 color = Color(0, 0.694118, 0.878431, 1)
 energy = 0.8
+range_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_orspf")
+height = 8.0

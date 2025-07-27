@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=13 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://qtwxx6cwvifg" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
+[ext_resource type="Shader" uid="uid://dn5wcvikvrvsk" path="res://resources/shaders/player_light.tres" id="4_pknkg"]
 [ext_resource type="Texture2D" uid="uid://msiifb5fyob6" path="res://assets/environment/player-light-texture.png" id="4_tj6oj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
@@ -34,8 +35,12 @@ radius = 37.4833
 [sub_resource type="CircleShape2D" id="CircleShape2D_tj6oj"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
-radius = 6.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rix40"]
+shader = ExtResource("4_pknkg")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj6oj"]
+radius = 8.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
@@ -57,6 +62,8 @@ one_shot = true
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 light_mask = 2
+z_index = 10
+texture_filter = 1
 custom_minimum_size = Vector2(32, 4)
 offset_left = -16.0
 offset_top = -22.0
@@ -91,7 +98,10 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_tj6oj")
 
 [node name="PlayerPointLight2D" type="PointLight2D" parent="."]
+material = SubResource("ShaderMaterial_rix40")
 color = Color(1, 0.91644, 0.752752, 1)
+energy = 2.0
+range_layer_max = 2
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.152941)
@@ -99,11 +109,12 @@ shadow_filter = 1
 shadow_filter_smooth = 8.0
 texture = ExtResource("4_tj6oj")
 texture_scale = 0.75
+height = 64.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8afob")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_dovo2")
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_tj6oj")

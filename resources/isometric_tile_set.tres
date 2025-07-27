@@ -1,0 +1,161 @@
+[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://k1vl20h5hnow"]
+
+[ext_resource type="Texture2D" uid="uid://dxxwf5adqxsa0" path="res://assets/aseprite/firebelly-course-sprite.png" id="1_fkffi"]
+[ext_resource type="Texture2D" uid="uid://dvemqwvmewjq8" path="res://assets/aseprite/firebelly-course-sprite-normals.png" id="2_huhj3"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fkffi"]
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(-16, -16, 0, -8, 0, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_huhj3"]
+cull_mode = 2
+polygon = PackedVector2Array(-16, -16, 0, -8, 16, -16, 0, -24)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_imscv"]
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(0, 8, 0, -8, 15.5, -15.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v1814"]
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(-16, -16.5, -6, -21, 10, -13, 10, 3)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6xkee"]
+polygon = PackedVector2Array(-9.5, -13.5, 6, -21, 16, -16, 16, 0, 0, 8, -9.5, 3.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5r66o"]
+polygon = PackedVector2Array(-6, -21, 0, -18, 6, -21, 16, -16, 16, 0, 0, 8, -16, 0, -16, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gjw0s"]
+polygon = PackedVector2Array(0, -18, 10, -13, 10, 3, 0, 8, -10, 3, -10, -13)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_imscv"]
+diffuse_texture = ExtResource("1_fkffi")
+normal_texture = ExtResource("2_huhj3")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1814"]
+texture = SubResource("CanvasTexture_imscv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -8)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -8)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -8)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -8)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, -8)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, -8)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -8)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -8)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, -8)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, -8)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, -8)
+5:1/0 = 0
+5:1/0/texture_origin = Vector2i(0, -8)
+6:1/0 = 0
+6:1/0/texture_origin = Vector2i(0, -8)
+7:1/0 = 0
+7:1/0/texture_origin = Vector2i(0, -8)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 8)
+0:2/0/z_index = 1
+0:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_fkffi")
+0:2/0/occlusion_layer_1/polygon_0/polygon = SubResource("OccluderPolygon2D_huhj3")
+0:2/0/occlusion_layer_2/polygon_0/polygon = SubResource("OccluderPolygon2D_imscv")
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 16, 0, 0, 8, -16, 0)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -8)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -8)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -8)
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, -8)
+5:2/0 = 0
+5:2/0/texture_origin = Vector2i(0, -8)
+6:2/0 = 0
+6:2/0/texture_origin = Vector2i(0, -8)
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, -8)
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, -8)
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, -8)
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, -8)
+4:3/0 = 0
+4:3/0/texture_origin = Vector2i(0, -8)
+5:3/0 = 0
+5:3/0/texture_origin = Vector2i(0, -8)
+6:3/0 = 0
+6:3/0/texture_origin = Vector2i(0, -8)
+7:3/0 = 0
+7:3/0/texture_origin = Vector2i(0, -8)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 8)
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, -6, 5, 10, -3)
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, 8)
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -10.1818, -3.63636, 7.27273, 5.09091, 16, 0)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, 8)
+2:4/0/z_index = 1
+2:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_v1814")
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -6.5, -16, 0, 0, 8, 13, 1.5)
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, 8)
+3:4/0/z_index = 1
+3:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_6xkee")
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -6.5, -13, 1.5, 0, 8, 16, 0)
+5:4/0 = 0
+5:4/0/texture_origin = Vector2i(0, 8)
+5:4/0/z_index = 1
+5:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_5r66o")
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, -4, -6, 0, -4, 4, -6, 16, 0, 0, 8)
+4:4/0 = 0
+4:4/0/texture_origin = Vector2i(0, 8)
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, -6, 5, 0.5, 2, 6.5, 4.5, 16, 0)
+6:4/0 = 0
+6:4/0/texture_origin = Vector2i(0, 8)
+6:4/0/z_index = 1
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(13, 1.5, 0, 8, -16, 0, 0, -8, 13, -1.5, 9.5, 0)
+7:4/0 = 0
+7:4/0/texture_origin = Vector2i(0, 8)
+7:4/0/z_index = 1
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 16, 0, 0, 8, -13, 1.5, -9.5, 0, -13, -1.5)
+8:4/0 = 0
+8:4/0/texture_origin = Vector2i(0, 8)
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -13, -1.5, 0, 4.5, 13, -1.5)
+9:4/0 = 0
+9:4/0/texture_origin = Vector2i(0, 8)
+9:4/0/z_index = 1
+9:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gjw0s")
+9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13, 1.5, 0, -5, 13, 1.5, 0, 8)
+
+[resource]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
+occlusion_layer_1/light_mask = 1
+occlusion_layer_2/light_mask = 1
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Stone Floor"
+terrain_set_0/terrain_0/color = Color(0.435294, 0.843137, 0.219608, 1)
+sources/1 = SubResource("TileSetAtlasSource_v1814")

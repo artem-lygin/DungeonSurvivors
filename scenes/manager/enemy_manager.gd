@@ -23,9 +23,11 @@ func on_timer_timeout() -> void:
 	@warning_ignore("untyped_declaration")
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null: return
-		
+	
+	# Defining the plase of enemy spawn	
 	var random_direction: Vector2 = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	var spawn_position: Vector2 =  player.global_position + (random_direction * SPAWN_RADIUS)
+	
 	
 	# Instantiate basic enemy node into the scene
 	var enemy: Node2D = basic_enemy_scene.instantiate() as Node2D
