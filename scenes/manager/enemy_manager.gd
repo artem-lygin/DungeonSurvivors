@@ -10,32 +10,52 @@ const DIFFICULTY_INCREASED_RATIO = 0.1
 
 var enemy_spawn_time: float = 0
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	enemy_spawn_time = enemy_spawn_timer.wait_time
 	enemy_spawn_timer.timeout.connect(on_timer_timeout)
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	
+func get_spawn_position () -> Vector2: # Defining the plase of enemy spawn	
+	@warning_ignore("untyped_declaration")
+	var player = get_tree().get_first_node_in_group("player") as Node2D
 	
+	if player == null: #safecheck
+		return Vector2.ZERO
+	
+	var spawn_position: Vector2 = player.global_position
+	var random_direction: Vector2 = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	
+	for i in 4: # for loop is not inclusive: i < 4
+		spawn_position =  player.global_position + (random_direction * SPAWN_RADIUS)
+		# Querying the *direct space state* (current state of physics objects in the game)
+		var query_parameters: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1 << 0)
+		var result: Dictionary = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
+		
+		if result.is_empty():
+			# raycast to spawn_position did not met any collisions and it safe to spawn an enemy and exit the loop
+			break
+		else:
+			random_direction = random_direction.rotated(deg_to_rad(90))
+			
+	return spawn_position
+
+
 func on_timer_timeout() -> void:
 	enemy_spawn_timer.start() # Handling staring the timer here to be able to change it wait_time
 	
 	@warning_ignore("untyped_declaration")
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null: return
-	
-	# Defining the plase of enemy spawn	
-	var random_direction: Vector2 = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var spawn_position: Vector2 =  player.global_position + (random_direction * SPAWN_RADIUS)
-	
-	
+
 	# Instantiate basic enemy node into the scene
 	var enemy: Node2D = basic_enemy_scene.instantiate() as Node2D
+	
 	@warning_ignore("untyped_declaration")
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer == null: return
 	entities_layer.add_child(enemy) #add the scene as child node of "Main" node
-	enemy.global_position = spawn_position
+	enemy.global_position = get_spawn_position()
 	
 	
 func on_arena_difficulty_increased(arena_difficulty: int) -> void:
