@@ -68,7 +68,6 @@ position = Vector2(335, 199)
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.235726, 0.291968, 0.347398, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
