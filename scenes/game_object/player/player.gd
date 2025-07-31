@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 const MAX_SPEED = 120
 const ACCELERATION_SMOOTHING: int = 25
-const ISO_RATIO: float = .5
 
 @onready var damage_interval_timer: Timer = $%DamageIntervalTimer
 @onready var health_component: Node = $%HealthComponent
@@ -22,7 +21,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var movement_vector: Vector2 = get_movement_vector() # Raw vectors
-	var direction: Vector2 = movement_vector.normalized() # Normalisation forces movement vectors be 1
+	var iso_movement_vector: Vector2 = IsoUtils.to_isometric(movement_vector)
+	var direction: Vector2 = iso_movement_vector.normalized() # Normalisation forces movement vectors be 1
 	var target_velocity: Vector2 = direction * MAX_SPEED
 	
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))

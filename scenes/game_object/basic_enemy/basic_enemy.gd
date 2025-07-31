@@ -7,7 +7,8 @@ const MAX_SPEED = 40 # Basic Enemy speed
 
 func _process(_delta: float) -> void:
 	var direction: Vector2 = get_direction_to_player()
-	velocity = direction * MAX_SPEED
+	var iso_direction: Vector2 = IsoUtils.to_isometric(direction)
+	velocity = iso_direction * MAX_SPEED
 	move_and_slide()
 
 

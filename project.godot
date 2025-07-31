@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvents="*res://scenes/autoload/game_events.tscn"
+IsoUtils="*res://scenes/autoload/utilities/iso_utils.gd"
 
 [debug]
 
