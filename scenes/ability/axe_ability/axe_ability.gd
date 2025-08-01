@@ -26,7 +26,7 @@ func _axe_tween_method(axe_rotations: float) -> void:
 	var axe_current_radius: float = percent * AXE_MAX_RADIUS
 	# var axe_current_direction: Vector2 = Vector2.RIGHT.rotated(axe_rotations * TAU)
 	var axe_current_direction: Vector2 = axe_base_rotation.rotated(axe_rotations * TAU)
-	var axe_iso_direction: Vector2 = IsoUtils.to_isometric(axe_current_direction)
+	var axe_iso_direction: Vector2 = IsoUtils.to_isometric_direction(axe_current_direction)
 	
 	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:return

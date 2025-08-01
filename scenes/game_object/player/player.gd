@@ -7,6 +7,7 @@ const ACCELERATION_SMOOTHING: int = 25
 @onready var health_component: Node = $%HealthComponent
 @onready var enemies_collision_area: Area2D = $%EnemiesCollisionArea2D
 @onready var health_bar: ProgressBar = $%HealthBar #progressbar
+@onready var abilities: Node = $%Abilities
 
 var number_colliding_bodies: int = 0
 
@@ -15,15 +16,18 @@ func _ready() -> void:
 	enemies_collision_area.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_changed.connect(on_health_changed)
+	GameEvents.ability_upgrade_added.connect(_on_ability_upgrade_added) # Check if ability upgraded is "Ability" and instantiate
 	
 	update_health_display()
 
 
 func _process(delta: float) -> void:
+	if DebugUtils.debug_mode:
+		queue_redraw()
 	var movement_vector: Vector2 = get_movement_vector() # Raw vectors
-	var iso_movement_vector: Vector2 = IsoUtils.to_isometric(movement_vector)
-	var direction: Vector2 = iso_movement_vector.normalized() # Normalisation forces movement vectors be 1
-	var target_velocity: Vector2 = direction * MAX_SPEED
+	var direction: Vector2 = movement_vector.normalized() # Normalisation forces movement vectors be 1
+	var iso_direction: Vector2 = IsoUtils.to_isometric_direction(direction) # simple transformation
+	var target_velocity: Vector2 = iso_direction * MAX_SPEED
 	
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	
@@ -62,3 +66,18 @@ func on_damage_interval_timer_timeout() -> void:
 	
 func on_health_changed() -> void:
 	update_health_display()
+
+# If picked ability is "Ability" class then instantiate to a Abilities of the Player
+func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary) -> void:
+	if not ability_upgrade is Ability:
+		return
+	
+	var ability: Ability = ability_upgrade as Ability
+	abilities.add_child(ability.ability_controller_scene.instantiate())
+
+
+func _draw() -> void:
+	if DebugUtils.debug_mode:
+		draw_line(Vector2.ZERO, velocity*1, Color.ORANGE, 1)
+	else:
+		return

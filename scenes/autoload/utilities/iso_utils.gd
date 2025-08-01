@@ -1,11 +1,23 @@
-# iso_utils.gd
 extends Node
 
-# Isometric 2:1 ratio
-const ISOMETRIC_RATIO := Vector2(1, 0.5)
+const ISOMETRIC_MODE: = true # if TRUE going to return recalculated Vectors2, if FALSE will return input Vector2
+const ISOMETRIC_RATIO: = Vector2(1, 0.5)
 
-func to_isometric(vector: Vector2) -> Vector2:
-	return vector * ISOMETRIC_RATIO
+func to_isometric_direction(vector: Vector2) -> Vector2:
+	if ISOMETRIC_MODE:
+		return vector * ISOMETRIC_RATIO
+	else:
+		return vector
 
-func from_isometric(vector: Vector2) -> Vector2: # Optional: inverse transform (e.g. from screen-space to world-space direction)
+func from_isometric_direction(vector: Vector2) -> Vector2: # Optional: inverse transform (e.g. from screen-space to world-space direction)
 	return Vector2(vector.x, vector.y * 2)
+
+func to_isometric_length(vector: Vector2) -> Vector2:
+	if ISOMETRIC_MODE:
+		if !vector.is_normalized():
+			vector = vector.normalized()
+		var iso_vector: Vector2 = vector * ISOMETRIC_RATIO
+		var iso_scale: float = sqrt(pow(iso_vector.x, 2) + pow(iso_vector.y, 2))
+		return vector * iso_scale
+	else:
+		return vector

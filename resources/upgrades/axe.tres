@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c33feax62wvk"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://c33feax62wvk"]
 
-[ext_resource type="Script" uid="uid://lx6mm26twja7" path="res://resources/upgrades/ability_upgrade.gd" id="1_vgov1"]
+[ext_resource type="PackedScene" uid="uid://b00jw5sqh4mci" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_lxg8a"]
+[ext_resource type="Script" uid="uid://ba4hspfxm0h78" path="res://resources/upgrades/ability.gd" id="2_wleet"]
 
 [resource]
-script = ExtResource("1_vgov1")
+script = ExtResource("2_wleet")
+ability_controller_scene = ExtResource("1_lxg8a")
 upgrade_id = "axe"
 upgrade_name = "Axe"
 upgrade_description = "Periodicly sends out a spinning axe"

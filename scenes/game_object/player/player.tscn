@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=13 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://qtwxx6cwvifg" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
 [ext_resource type="Shader" uid="uid://dn5wcvikvrvsk" path="res://resources/shaders/player_light.tres" id="4_pknkg"]
-[ext_resource type="PackedScene" uid="uid://b00jw5sqh4mci" path="res://scenes/ability/axe_ability_controller/axe_abilty_controller.tscn" id="4_rix40"]
 [ext_resource type="Texture2D" uid="uid://msiifb5fyob6" path="res://assets/environment/player-light-texture.png" id="4_tj6oj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
@@ -51,11 +50,10 @@ script = ExtResource("1_dovo2")
 [node name="HealthComponent" parent="." instance=ExtResource("2_ss5pk")]
 unique_name_in_owner = true
 
-[node name="AbilityManager" type="Node" parent="."]
+[node name="Abilities" type="Node" parent="."]
+unique_name_in_owner = true
 
-[node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_gmlin")]
-
-[node name="AxeAbiltyController" parent="AbilityManager" instance=ExtResource("4_rix40")]
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_gmlin")]
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 unique_name_in_owner = true
