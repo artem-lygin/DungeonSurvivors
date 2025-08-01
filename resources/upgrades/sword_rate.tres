@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_pyxp1")
-upgrade_id = "sword_rate"
-upgrade_name = "Sword Quickness"
-upgrade_description = "Increases sword attack rate by 10%"
+id = "sword_rate"
+max_quantity = 5
+name = "Sword Rate"
+description = "Spawn sword 10% fastera"

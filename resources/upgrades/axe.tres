@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_wleet")
 ability_controller_scene = ExtResource("1_lxg8a")
-upgrade_id = "axe"
-upgrade_name = "Axe"
-upgrade_description = "Periodicly sends out a spinning axe"
+id = "axe"
+max_quantity = 1
+name = "Axe"
+description = "Spawn spining axe"

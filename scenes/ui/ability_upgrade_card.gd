@@ -18,6 +18,6 @@ func on_gui_input(event: InputEvent) -> void:
 
 
 func set_ability_upgrade(upgrade: AbilityUpgrade) -> void:
-	name_label.text = upgrade.upgrade_name
-	description_label.text = upgrade.upgrade_description
+	name_label.text = upgrade.name
+	description_label.text = upgrade.description
 	

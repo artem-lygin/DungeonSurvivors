@@ -61,7 +61,7 @@ func on_timer_timeout() -> void:
 	
 	
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
-	if upgrade.upgrade_id != "sword_rate":
+	if upgrade.id != "sword_rate":
 		return
 	
 	var percent_reduction: float = current_upgrades["sword_rate"]["quantity"] * .1
