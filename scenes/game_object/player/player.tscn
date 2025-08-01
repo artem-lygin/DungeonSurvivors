@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=18 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
@@ -7,12 +7,97 @@
 [ext_resource type="Shader" uid="uid://dn5wcvikvrvsk" path="res://resources/shaders/player_light.tres" id="4_pknkg"]
 [ext_resource type="Texture2D" uid="uid://msiifb5fyob6" path="res://assets/environment/player-light-texture.png" id="4_tj6oj"]
 
+[sub_resource type="Animation" id="Animation_pknkg"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.261799, 0.0, 0.261799, 0.0, -0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0.8), Vector2(1, 1), Vector2(1, 0.8), Vector2(1, 1), Vector2(1, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_rix40"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rix40"]
+_data = {
+&"RESET": SubResource("Animation_rix40"),
+&"walk": SubResource("Animation_pknkg")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rix40"]
+light_mode = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss5pk"]
@@ -22,11 +107,6 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-corner_detail = 4
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3670"]
@@ -38,6 +118,9 @@ radius = 7.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rix40"]
 shader = ExtResource("4_pknkg")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pknkg"]
+light_mode = 1
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj6oj"]
 radius = 8.0
 height = 16.0
@@ -46,6 +129,12 @@ height = 16.0
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_dovo2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_rix40")
+}
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ss5pk")]
 unique_name_in_owner = true
@@ -62,9 +151,10 @@ one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-light_mask = 2
+light_mask = 3
 z_index = 10
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_rix40")
 custom_minimum_size = Vector2(32, 4)
 offset_left = -16.0
 offset_top = -22.0
@@ -80,6 +170,7 @@ show_percentage = false
 
 [node name="PickupArea2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -6)
 collision_layer = 16
 collision_mask = 0
@@ -91,6 +182,7 @@ shape = SubResource("CircleShape2D_s3670")
 
 [node name="EnemiesCollisionArea2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -112,10 +204,33 @@ texture = ExtResource("4_tj6oj")
 texture_scale = 0.75
 height = 64.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+light_mask = 3
+material = SubResource("CanvasItemMaterial_pknkg")
 texture = ExtResource("1_8afob")
 offset = Vector2(0, -8)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_tj6oj")
