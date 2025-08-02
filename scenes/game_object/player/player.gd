@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		
 	var move_sign: Variant = sign(movement_vector.x)
 	if move_sign == 0:
-		visuals_node.scale 
+		visuals_node.scale
 	else:
 		visuals_node.scale = Vector2(move_sign, 1)
 

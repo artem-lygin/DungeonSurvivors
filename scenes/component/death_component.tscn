@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7dckva28e14j"]
+
+[ext_resource type="Texture2D" uid="uid://cqjk72x4ypkm1" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_lgj88"]
+
+[sub_resource type="Animation" id="Animation_lgj88"]
+resource_name = "death"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iwr6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muesg"]
+_data = {
+&"RESET": SubResource("Animation_iwr6c"),
+&"death": SubResource("Animation_lgj88")
+}
+
+[sub_resource type="Curve" id="Curve_iwr6c"]
+_data = [Vector2(0, 1), 0.0, 0.83029, 0, 0, Vector2(0.822767, 0.486648), -2.67537, -2.67537, 0, 0, Vector2(1, 0), -0.101692, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_muesg"]
+curve = SubResource("Curve_iwr6c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sn7fp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 75.0
+initial_velocity_max = 150.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 200, 0)
+scale_curve = SubResource("CurveTexture_muesg")
+
+[node name="DeathComponent" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_muesg")
+}
+autoplay = "death"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("1_lgj88")
+lifetime = 0.65
+one_shot = true
+fixed_fps = 0
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_sn7fp")

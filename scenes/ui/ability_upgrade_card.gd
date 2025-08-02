@@ -4,6 +4,7 @@ signal selected
 
 @onready var name_label: Label = $%NameLabel
 @onready var description_label: Label = $%DescriptionLabel
+@onready var select_button: Button = $%SelectButton
 @onready var next_card: Control
 @onready var prev_card: Control
 
