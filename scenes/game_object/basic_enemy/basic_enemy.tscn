@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://oi7cn7ov62qr"]
+[gd_scene load_steps=14 format=3 uid="uid://oi7cn7ov62qr"]
 
 [ext_resource type="Script" uid="uid://bnm55wxvhb3r4" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gxg7h"]
+[ext_resource type="PackedScene" uid="uid://b7dckva28e14j" path="res://scenes/component/death_component.tscn" id="2_bq7hi"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_isd1k"]
 [ext_resource type="Texture2D" uid="uid://cqjk72x4ypkm1" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="2_xrbw7"]
 [ext_resource type="PackedScene" uid="uid://cfcqb6lxviidl" path="res://scenes/component/vial_drop_component.tscn" id="3_pcrk2"]
@@ -75,7 +76,6 @@ radius = 12.0
 blend_mode = 1
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_elloc"]
-cull_mode = 1
 polygon = PackedVector2Array(-4, -11, -7, -8, -7, -5, -6, -2, -2, -2, -2, 1, -1, 2, 3, 2, 4, 1, 5, 1, 6, 0, 6, -1, 7, -2, 7, -4, 4, -10, 2, -12, -2, -12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qrggj"]
@@ -92,6 +92,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_jkye5")
 }
 autoplay = "walk"
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "enemy_sprite") instance=ExtResource("2_bq7hi")]
+health_component = NodePath("../HealthComponent")
+enemy_sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_isd1k")]
 
@@ -113,6 +117,7 @@ texture = ExtResource("2_xrbw7")
 offset = Vector2(0, -4)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Visuals/Sprite2D"]
+unique_name_in_owner = true
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_elloc")
 position = Vector2(0, 1)

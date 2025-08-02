@@ -3,15 +3,29 @@ extends CharacterBody2D
 const MAX_SPEED = 40 # Basic Enemy speed
 
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var visuals_node: Node2D = $Visuals
+@onready var occluder_node: LightOccluder2D = $%LightOccluder2D
 
+func _ready() -> void:
+	if occluder_node != null:
+		occluder_node.occluder = occluder_node.occluder.duplicate()
 
 func _process(_delta: float) -> void:
+	
 	if DebugUtils.debug_mode:
 		queue_redraw()
 	var direction: Vector2 = get_direction_to_player()
 	# var iso_direction: Vector2 = IsoUtils.to_isometric(direction)
 	velocity = direction * MAX_SPEED
 	move_and_slide()
+	
+	var move_sign: Variant = sign(direction.x)
+	if move_sign != 0:
+		visuals_node.scale = Vector2(-move_sign, 1)
+		if occluder_node != null:
+			match move_sign:
+				-1.0 :	occluder_node.occluder.cull_mode = OccluderPolygon2D.CULL_CLOCKWISE
+				1.0 :	occluder_node.occluder.cull_mode = OccluderPolygon2D.CULL_COUNTER_CLOCKWISE
 
 
 func get_direction_to_player() -> Vector2:

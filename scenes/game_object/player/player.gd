@@ -41,9 +41,7 @@ func _process(delta: float) -> void:
 		animation_player.play("RESET")
 		
 	var move_sign: Variant = sign(movement_vector.x)
-	if move_sign == 0:
-		visuals_node.scale
-	else:
+	if move_sign != 0:
 		visuals_node.scale = Vector2(move_sign, 1)
 
 func get_movement_vector() -> Vector2:
