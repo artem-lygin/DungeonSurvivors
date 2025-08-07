@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-@onready var health_component: HealthComponent = $%HealthComponent
 @onready var velocity_component: VelocityComponent = $%VelocityComponent
-@onready var visuals_node: Node2D = $Visuals
-@onready var occluder_node: LightOccluder2D = $%LightOccluder2D
+@onready var visuals: Node2D = $Visuals
+@onready var occluder_node: LightOccluder2D = %LightOccluder2D
 
 
 func _ready() -> void:
 	if occluder_node != null:
 		occluder_node.occluder = occluder_node.occluder.duplicate()
+
 
 func _process(_delta: float) -> void:
 	velocity_component.accelerate_to_player()
@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 	# Facing Sprite2D in movement direction and swapping occluder's cull_mode
 	var move_sign: Variant = sign(velocity.x)
 	if move_sign != 0:
-		visuals_node.scale = Vector2(-move_sign, 1)
+		visuals.scale = Vector2(move_sign, 1)
 		if occluder_node != null:
 			match move_sign:
 				-1.0 :	occluder_node.occluder.cull_mode = OccluderPolygon2D.CULL_CLOCKWISE
@@ -27,8 +27,6 @@ func _process(_delta: float) -> void:
 	if DebugUtils.debug_mode:
 		queue_redraw()
 
-#func on_area_entered(_other_area: Area2D) -> void:
-	#health_component.damage(5)
 
 # Debug tools to Velocity Component and apply real direction and velocity to be drawn
 func _draw() -> void:

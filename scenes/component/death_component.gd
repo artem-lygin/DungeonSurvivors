@@ -15,10 +15,10 @@ func _ready() -> void:
 func _on_died() -> void:
 	if owner == null || not owner is Node2D: return
 	var spawn_position: Vector2 = owner.global_position
-	
+
 	var entities_layer: Node = get_tree().get_first_node_in_group("entities_layer")
 	get_parent().remove_child(self)
 	entities_layer.add_child(self)
-	
+
 	self.global_position = spawn_position
 	animation_player.play("death")

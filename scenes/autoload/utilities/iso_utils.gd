@@ -14,7 +14,7 @@ func from_isometric_direction(vector: Vector2) -> Vector2: # Optional: inverse t
 
 func to_isometric_length(vector: Vector2) -> Vector2:
 	if ISOMETRIC_MODE:
-		if !vector.is_normalized():
+		if not vector.is_normalized():
 			vector = vector.normalized()
 		var iso_vector: Vector2 = vector * ISOMETRIC_RATIO
 		var iso_scale: float = sqrt(pow(iso_vector.x, 2) + pow(iso_vector.y, 2))
