@@ -1,21 +1,10 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://k1vl20h5hnow"]
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://k1vl20h5hnow"]
 
 [ext_resource type="Texture2D" uid="uid://dxxwf5adqxsa0" path="res://assets/aseprite/firebelly-course-sprite.png" id="1_fkffi"]
 [ext_resource type="Texture2D" uid="uid://dvemqwvmewjq8" path="res://assets/aseprite/firebelly-course-sprite-normals.png" id="2_huhj3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fkffi"]
-closed = false
-cull_mode = 1
-polygon = PackedVector2Array(-16, -16, 0, -8, 0, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_huhj3"]
-cull_mode = 2
-polygon = PackedVector2Array(-16, -16, 0, -8, 16, -16, 0, -24)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_imscv"]
-closed = false
-cull_mode = 1
-polygon = PackedVector2Array(0, 8, 0, -8, 15.5, -15.5)
+polygon = PackedVector2Array(-6, -11, 10, -19, 0, -24, -16, -16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v1814"]
 closed = false
@@ -31,35 +20,20 @@ polygon = PackedVector2Array(-6, -21, 0, -18, 6, -21, 16, -16, 16, 0, 0, 8, -16,
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gjw0s"]
 polygon = PackedVector2Array(0, -18, 10, -13, 10, 3, 0, 8, -10, 3, -10, -13)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_imscv"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_fkffi"]
 diffuse_texture = ExtResource("1_fkffi")
 normal_texture = ExtResource("2_huhj3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1814"]
-texture = SubResource("CanvasTexture_imscv")
+texture = SubResource("CanvasTexture_fkffi")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, -8)
-1:0/0/probability = 5.0
-2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, -8)
-2:0/0/probability = 5.0
-3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, -8)
-3:0/0/probability = 5.0
-4:0/0 = 0
-4:0/0/texture_origin = Vector2i(0, -8)
-4:0/0/probability = 5.0
-5:0/0 = 0
-5:0/0/texture_origin = Vector2i(0, -8)
-5:0/0/probability = 5.0
-6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, -8)
-7:0/0 = 0
-7:0/0/texture_origin = Vector2i(0, -8)
+1:0/0/probability = 20.0
 0:4/0 = 0
 0:4/0/texture_origin = Vector2i(0, 8)
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, -6, 5, 10, -3)
+0:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_fkffi")
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, -3, 6.5, 13, -1.5)
 1:4/0 = 0
 1:4/0/texture_origin = Vector2i(0, 8)
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -10.1818, -3.63636, 7.27273, 5.09091, 16, 0)
@@ -97,16 +71,8 @@ texture_region_size = Vector2i(32, 32)
 9:4/0/z_index = 1
 9:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gjw0s")
 9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13, 1.5, 0, -5, 13, 1.5, 0, 8)
-0:2/0 = 0
-0:2/0/texture_origin = Vector2i(0, 8)
-0:2/0/z_index = 1
-0:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_fkffi")
-0:2/0/occlusion_layer_1/polygon_0/polygon = SubResource("OccluderPolygon2D_huhj3")
-0:2/0/occlusion_layer_2/polygon_0/polygon = SubResource("OccluderPolygon2D_imscv")
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 16, 0, 0, 8, -16, 0)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
-0:0/0/probability = 20.0
 
 [resource]
 tile_shape = 1
