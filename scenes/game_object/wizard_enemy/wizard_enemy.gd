@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var visuals: Node2D = $Visuals
 @onready var occluder_node: LightOccluder2D = %LightOccluder2D
 
+var is_moving: bool = false
 
 func _ready() -> void:
 	if occluder_node != null:
@@ -11,7 +12,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	velocity_component.accelerate_to_player()
+	if is_moving:
+		velocity_component.accelerate_to_player()
+	else:
+		velocity_component.decelertae()
+
 	velocity_component.move(self)
 
 	# Facing Sprite2D in movement direction and swapping occluder's cull_mode
@@ -26,6 +31,10 @@ func _process(_delta: float) -> void:
 	# DebugMode check and redraw
 	if DebugUtils.debug_mode:
 		queue_redraw()
+
+
+func set_is_moving(moving: bool) -> void:
+	is_moving = moving
 
 
 # Debug tools to Velocity Component and apply real direction and velocity to be drawn
