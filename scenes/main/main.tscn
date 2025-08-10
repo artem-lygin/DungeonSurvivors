@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://mfc4mmjxx8ub"]
+[gd_scene load_steps=17 format=4 uid="uid://mfc4mmjxx8ub"]
 
 [ext_resource type="PackedScene" uid="uid://h8hnoe34gtmb" path="res://scenes/ui/arena_timer_ui.tscn" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://k6mipbwcr22p" path="res://scenes/game_object/player/player.tscn" id="1_hyk8p"]
@@ -12,19 +12,22 @@
 [ext_resource type="PackedScene" uid="uid://c1uhh50jw4tax" path="res://scenes/manager/experience_manager.tscn" id="4_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnvo8bt817t86" path="res://scenes/manager/upgrade_manager.tscn" id="6_b1x3f"]
 [ext_resource type="TileSet" uid="uid://k1vl20h5hnow" path="res://resources/isometric_tile_set.tres" id="12_7smn1"]
+[ext_resource type="Shader" uid="uid://dydsqmi0u7fkb" path="res://shaders/vignette_effect.gdshader" id="12_raeie"]
 [ext_resource type="PackedScene" uid="uid://c6m01wrbkaoxs" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="13_th5th"]
 
 [sub_resource type="Environment" id="Environment_th5th"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxu8e"]
+shader = ExtResource("12_raeie")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.252
+shader_parameter/outer_radius = 1.734
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/smoothness = 0.102
+
 [node name="Main" type="Node"]
 script = ExtResource("1_ouso4")
 round_end_screen = ExtResource("2_blune")
-
-[node name="ArenaTimerUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_6q06x")]
-arena_time_manager = NodePath("../ArenaTimeManager")
-
-[node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_yyfjg")]
-experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_ow5a4")]
 
@@ -37,8 +40,7 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
-position = Vector2(319, 179)
-position_smoothing_speed = 50.0
+position_smoothing_speed = 10.0
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -60,6 +62,24 @@ y_sort_enabled = true
 [node name="ExperianceVial" parent="Entities" instance=ExtResource("13_th5th")]
 position = Vector2(390, 226)
 
+[node name="ExperianceVial2" parent="Entities" instance=ExtResource("13_th5th")]
+position = Vector2(390, 303)
+
+[node name="ExperianceVial3" parent="Entities" instance=ExtResource("13_th5th")]
+position = Vector2(204, 303)
+
+[node name="ExperianceVial4" parent="Entities" instance=ExtResource("13_th5th")]
+position = Vector2(62, 202)
+
+[node name="ExperianceVial5" parent="Entities" instance=ExtResource("13_th5th")]
+position = Vector2(308, 72)
+
+[node name="ExperianceVial6" parent="Entities" instance=ExtResource("13_th5th")]
+position = Vector2(524, 156)
+
+[node name="ExperianceVial7" parent="Entities" instance=ExtResource("13_th5th")]
+position = Vector2(573, 310)
+
 [node name="Player" parent="Entities" instance=ExtResource("1_hyk8p")]
 unique_name_in_owner = true
 light_mask = 2
@@ -68,7 +88,26 @@ position = Vector2(319, 180)
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.235726, 0.291968, 0.347398, 1)
+color = Color(0.206038, 0.159192, 0.306695, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_th5th")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_hxu8e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UserInterface" type="CanvasLayer" parent="." groups=["ui_layer"]]
+
+[node name="ArenaTimerUI" parent="UserInterface" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_6q06x")]
+arena_time_manager = NodePath("../../ArenaTimeManager")
+
+[node name="ExperienceBar" parent="UserInterface" node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_yyfjg")]
+experience_manager = NodePath("../../ExperienceManager")

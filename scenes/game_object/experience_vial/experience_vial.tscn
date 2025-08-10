@@ -66,7 +66,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_634ag"]
-radius = 16.0
+radius = 19.105
 
 [sub_resource type="Curve" id="Curve_jmuu1"]
 _data = [Vector2(0, 0.849071), 0.0, 0.0, 0, 0, Vector2(0.434944, 0.496904), -1.61248, -1.61248, 0, 0, Vector2(0.992565, 0), -0.0314928, 0.0, 0, 0]
@@ -92,13 +92,18 @@ libraries = {
 autoplay = "floating_vial"
 
 [node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1, 0.5)
 collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_634ag")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -10)
 texture = ExtResource("1_r4b2u")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
@@ -146,7 +151,6 @@ scale_amount_curve = SubResource("Curve_jmuu1")
 color = Color(0, 0.839216, 1, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 10)
 scale = Vector2(0.90625, 0.453125)
 color = Color(0, 0.694118, 0.878431, 1)
 energy = 0.8

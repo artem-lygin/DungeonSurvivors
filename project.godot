@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameEvents="*res://scenes/autoload/game_events.tscn"
 IsoUtils="*res://scenes/autoload/utilities/iso_utils.gd"
 DebugUtils="*res://scenes/autoload/utilities/debug_utils.gd"
+GameUtils="*res://scripts/game_utils.gd"
 
 [debug]
 
@@ -32,6 +33,8 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d07ey81a485o1"]
+[gd_scene load_steps=16 format=3 uid="uid://d07ey81a485o1"]
 
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="1_865ah"]
 [ext_resource type="Script" uid="uid://dvbnu28qolivx" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_qct4f"]
@@ -7,6 +7,34 @@
 [ext_resource type="PackedScene" uid="uid://d0q06wgqo7ckn" path="res://scenes/component/hurtbox_component.tscn" id="3_qct4f"]
 [ext_resource type="Texture2D" uid="uid://ct7iudjtfrtx8" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="4_rquut"]
 [ext_resource type="PackedScene" uid="uid://cfcqb6lxviidl" path="res://scenes/component/vial_drop_component.tscn" id="5_rquut"]
+[ext_resource type="Shader" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gdshader" id="7_sjtyn"]
+
+[sub_resource type="Animation" id="Animation_sjtyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_rquut"]
 resource_name = "walk"
@@ -54,33 +82,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_sjtyn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74qiw"]
 _data = {
 &"RESET": SubResource("Animation_sjtyn"),
@@ -88,6 +89,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjtyn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74qiw"]
+shader = ExtResource("7_sjtyn")
+shader_parameter/glow_intensity = 2.0
+shader_parameter/glow_radius = 0.1
+shader_parameter/pulse_speed = 3.0
+shader_parameter/glow_color = Color(1, 0.2, 0.2, 1)
+shader_parameter/red_threshold = 0.75
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rquut"]
 polygon = PackedVector2Array(-6, 0, -6, -12, -4, -14, 0, -14, 6, -10, 6, 0, 0, 0)
@@ -132,6 +141,7 @@ shape = SubResource("CircleShape2D_sjtyn")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+material = SubResource("ShaderMaterial_74qiw")
 texture = ExtResource("4_rquut")
 offset = Vector2(0, -8)
 

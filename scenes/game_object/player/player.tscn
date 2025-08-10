@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=19 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
@@ -121,6 +121,10 @@ shader = ExtResource("4_pknkg")
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pknkg"]
 light_mode = 1
 
+[sub_resource type="Curve" id="Curve_pknkg"]
+_data = [Vector2(0.00984251, 0.544944), 0.0, 1.6198, 0, 0, Vector2(0.545276, 0.960674), -1.61248, -1.61248, 0, 0, Vector2(0.992565, 0), -0.0314928, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj6oj"]
 radius = 8.0
 height = 16.0
@@ -170,13 +174,10 @@ show_percentage = false
 
 [node name="PickupArea2D" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(0, -6)
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
-position = Vector2(0, 3)
 scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_s3670")
 
@@ -189,6 +190,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesCollisionArea2D"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_tj6oj")
+debug_color = Color(0.493546, 0.290663, 0.962781, 0.42)
 
 [node name="PlayerPointLight2D" type="PointLight2D" parent="."]
 material = SubResource("ShaderMaterial_rix40")
@@ -229,6 +231,34 @@ metadata/_aseprite_wizard_interface_config_ = {
 },
 "slice_section": false
 }
+
+[node name="ExpCollectEffect" type="CPUParticles2D" parent="Visuals"]
+unique_name_in_owner = true
+position = Vector2(0, -12)
+emitting = false
+amount = 16
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.3
+randomness = 1.0
+lifetime_randomness = 0.56
+emission_shape = 3
+emission_rect_extents = Vector2(12, 6)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -40)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = 25.0
+angular_velocity_max = 160.0
+linear_accel_min = 1.0
+linear_accel_max = 10.0
+damping_max = 24.0
+angle_min = 381.6
+angle_max = 418.5
+scale_amount_min = 0.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_pknkg")
+color = Color(0, 0.839216, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -12,6 +12,8 @@ const ACCELERATION_SMOOTHING: int = 25
 @onready var visuals_node: Node2D = $Visuals
 @onready var player_light: PointLight2D = $PlayerPointLight2D
 @onready var player_base_color: Color
+@onready var exp_collect_effect: CPUParticles2D = $%ExpCollectEffect
+
 
 var number_colliding_bodies: int = 0
 
@@ -22,6 +24,7 @@ func _ready() -> void:
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(_on_ability_upgrade_added) # Check if ability upgraded is "Ability" and instantiate
+	GameEvents.expirience_vial_collected.connect(_on_experience_vial_collected)
 
 	update_health_display()
 
@@ -93,6 +96,11 @@ func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrade
 
 	var ability: Ability = ability_upgrade as Ability
 	abilities.add_child(ability.ability_controller_scene.instantiate())
+
+
+func _on_experience_vial_collected(_number: float) -> void:
+	print("Exp collect effect should be emitted")
+	exp_collect_effect.emitting = true
 
 
 func _draw() -> void:
