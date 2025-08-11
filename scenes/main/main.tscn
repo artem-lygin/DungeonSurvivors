@@ -104,7 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UserInterface" type="CanvasLayer" parent="." groups=["ui_layer"]]
+[node name="UserInterface" type="Node2D" parent="." groups=["ui_layer"]]
 
 [node name="ArenaTimerUI" parent="UserInterface" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_6q06x")]
 arena_time_manager = NodePath("../../ArenaTimeManager")

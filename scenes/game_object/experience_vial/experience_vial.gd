@@ -35,7 +35,7 @@ func _on_area_entered(_other_area: Area2D) -> void:
 	tween.set_parallel() # run tweens in paralel
 
 	tween.tween_method(_tween_collect.bind(global_position), 0.0, 1.0, pickaup_tween_duration)\
-	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK) # Exacuting EaseInBack transition via tween
 
 	tween.tween_property(sprite, "scale", Vector2.ZERO, .05).set_delay(pickaup_tween_duration - .05)
 

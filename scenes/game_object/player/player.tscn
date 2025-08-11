@@ -236,7 +236,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 unique_name_in_owner = true
 position = Vector2(0, -12)
 emitting = false
-amount = 16
+amount = 32
 lifetime = 1.2
 one_shot = true
 explosiveness = 0.3
@@ -256,9 +256,9 @@ damping_max = 24.0
 angle_min = 381.6
 angle_max = 418.5
 scale_amount_min = 0.0
-scale_amount_max = 2.5
+scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_pknkg")
-color = Color(0, 0.839216, 1, 1)
+color = Color(0.294118, 0.631373, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

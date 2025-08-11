@@ -99,7 +99,7 @@ func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrade
 
 
 func _on_experience_vial_collected(_number: float) -> void:
-	print("Exp collect effect should be emitted")
+	#print("Exp collect effect should be emitted")
 	exp_collect_effect.emitting = true
 
 
