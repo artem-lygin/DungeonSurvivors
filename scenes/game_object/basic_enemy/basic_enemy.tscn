@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://oi7cn7ov62qr"]
+[gd_scene load_steps=16 format=3 uid="uid://oi7cn7ov62qr"]
 
 [ext_resource type="Script" uid="uid://bnm55wxvhb3r4" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gxg7h"]
 [ext_resource type="PackedScene" uid="uid://b7dckva28e14j" path="res://scenes/component/death_component.tscn" id="2_bq7hi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqjk72x4ypkm1" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="2_xrbw7"]
 [ext_resource type="PackedScene" uid="uid://c15x3unpqnu58" path="res://scenes/component/velocity_component.tscn" id="3_jkye5"]
 [ext_resource type="PackedScene" uid="uid://cfcqb6lxviidl" path="res://scenes/component/vial_drop_component.tscn" id="3_pcrk2"]
+[ext_resource type="PackedScene" uid="uid://bfghli8mm2v3v" path="res://scenes/component/hit_flash_component.tscn" id="3_v58qd"]
 [ext_resource type="PackedScene" uid="uid://d0q06wgqo7ckn" path="res://scenes/component/hurtbox_component.tscn" id="4_elloc"]
 
 [sub_resource type="Animation" id="Animation_bq7hi"]
@@ -94,9 +95,9 @@ libraries = {
 }
 autoplay = "walk"
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "enemy_sprite") instance=ExtResource("2_bq7hi")]
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_v58qd")]
 health_component = NodePath("../HealthComponent")
-enemy_sprite = NodePath("../Visuals/Sprite2D")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_jkye5")]
 unique_name_in_owner = true
@@ -107,6 +108,10 @@ unique_name_in_owner = true
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_pcrk2")]
 drop_persentage = 0.35
 health_component = NodePath("../HealthComponent")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "enemy_sprite") instance=ExtResource("2_bq7hi")]
+health_component = NodePath("../HealthComponent")
+enemy_sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_elloc")]
 health_component = NodePath("../HealthComponent")

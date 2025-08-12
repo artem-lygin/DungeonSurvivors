@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d07ey81a485o1"]
+[gd_scene load_steps=17 format=3 uid="uid://d07ey81a485o1"]
 
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="1_865ah"]
 [ext_resource type="Script" uid="uid://dvbnu28qolivx" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_qct4f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d0q06wgqo7ckn" path="res://scenes/component/hurtbox_component.tscn" id="3_qct4f"]
 [ext_resource type="Texture2D" uid="uid://ct7iudjtfrtx8" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="4_rquut"]
 [ext_resource type="PackedScene" uid="uid://cfcqb6lxviidl" path="res://scenes/component/vial_drop_component.tscn" id="5_rquut"]
+[ext_resource type="PackedScene" uid="uid://bfghli8mm2v3v" path="res://scenes/component/hit_flash_component.tscn" id="6_74qiw"]
 [ext_resource type="Shader" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gdshader" id="7_sjtyn"]
 
 [sub_resource type="Animation" id="Animation_sjtyn"]
@@ -129,6 +130,10 @@ acceleration = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_rquut")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_74qiw")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_qct4f")]
 position = Vector2(0, -7)

@@ -25,5 +25,7 @@ func get_health_percent() -> float:
 
 func check_death() -> void:
 	if current_health == 0:
+		# Wait for hit_flash_component
+		await  get_tree().create_timer(0.1).timeout
 		died.emit()
 		owner.queue_free()
