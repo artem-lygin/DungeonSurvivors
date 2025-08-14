@@ -60,10 +60,10 @@ tile_set = ExtResource("12_7smn1")
 y_sort_enabled = true
 
 [node name="ExperianceVial" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(390, 226)
+position = Vector2(380, 189)
 
 [node name="ExperianceVial2" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(390, 303)
+position = Vector2(437, 289)
 
 [node name="ExperianceVial3" parent="Entities" instance=ExtResource("13_th5th")]
 position = Vector2(204, 303)

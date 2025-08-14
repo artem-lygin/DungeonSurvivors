@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://clohxj6kgrr5r"]
+
+[ext_resource type="Script" uid="uid://b53gh6opdarmt" path="res://scenes/component/player_light_effect_component.gd" id="1_hhl7o"]
+[ext_resource type="Texture2D" uid="uid://d3qfro8q6ofnr" path="res://resources/vfx/player_light.tres" id="2_0wdrg"]
+
+[node name="PlayerLightEffectComponent" type="Node2D"]
+script = ExtResource("1_hhl7o")
+
+[node name="PlayerPointLight2D" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+color = Color(1, 0.91644, 0.752752, 1)
+energy = 2.0
+range_layer_max = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.152941)
+shadow_filter = 1
+shadow_filter_smooth = 8.0
+texture = ExtResource("2_0wdrg")
+height = 24.0

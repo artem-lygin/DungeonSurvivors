@@ -10,10 +10,6 @@ const ACCELERATION_SMOOTHING: int = 25
 @onready var abilities: Node = $%Abilities
 @onready var animation_player: AnimationPlayer = $%AnimationPlayer
 @onready var visuals_node: Node2D = $Visuals
-@onready var player_light: PointLight2D = $PlayerPointLight2D
-@onready var player_base_color: Color
-@onready var exp_collect_effect: CPUParticles2D = $%ExpCollectEffect
-
 
 var number_colliding_bodies: int = 0
 
@@ -24,7 +20,6 @@ func _ready() -> void:
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(_on_ability_upgrade_added) # Check if ability upgraded is "Ability" and instantiate
-	GameEvents.expirience_vial_collected.connect(_on_experience_vial_collected)
 
 	update_health_display()
 
@@ -50,10 +45,6 @@ func _process(delta: float) -> void:
 	if move_sign != 0:
 		visuals_node.scale = Vector2(move_sign, 1)
 
-	var flick_timer: float = Time.get_ticks_msec() / 1000.0
-	var wave: float = sin(flick_timer * 4.0 * TAU) * 0.5 + 0.5  # from 0 to 1
-	player_light.energy = lerp(1.8, 2.0, wave)
-	#player_light.color = player_base_color + Color(randf_range(-0.05, 0.05), randf_range(-0.03, 0.03), 0.0)
 
 func get_movement_vector() -> Vector2:
 	var x_movement: float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -98,9 +89,9 @@ func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrade
 	abilities.add_child(ability.ability_controller_scene.instantiate())
 
 
-func _on_experience_vial_collected(_number: float) -> void:
-	#print("Exp collect effect should be emitted")
-	exp_collect_effect.emitting = true
+#func _on_experience_vial_collected(_number: float) -> void:
+	##print("Exp collect effect should be emitted")
+	#exp_collect_effect.emitting = true
 
 
 func _draw() -> void:
