@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=15 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
@@ -114,9 +114,6 @@ radius = 37.4833
 [sub_resource type="CircleShape2D" id="CircleShape2D_tj6oj"]
 radius = 7.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pknkg"]
-light_mode = 1
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj6oj"]
 radius = 8.0
 height = 16.0
@@ -135,7 +132,8 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("2_ss5pk")]
 unique_name_in_owner = true
 
-[node name="VisualEffectsManager" parent="." instance=ExtResource("3_tj6oj")]
+[node name="VisualEffectsManager" parent="." node_paths=PackedStringArray("player_sprite") instance=ExtResource("3_tj6oj")]
+player_sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="Abilities" type="Node" parent="."]
 unique_name_in_owner = true
@@ -190,7 +188,6 @@ debug_color = Color(0.493546, 0.290663, 0.962781, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 light_mask = 3
-material = SubResource("CanvasItemMaterial_pknkg")
 texture = ExtResource("1_8afob")
 offset = Vector2(0, -8)
 metadata/_aseprite_wizard_interface_config_ = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://mfc4mmjxx8ub"]
+[gd_scene load_steps=25 format=4 uid="uid://mfc4mmjxx8ub"]
 
 [ext_resource type="PackedScene" uid="uid://h8hnoe34gtmb" path="res://scenes/ui/arena_timer_ui.tscn" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://k6mipbwcr22p" path="res://scenes/game_object/player/player.tscn" id="1_hyk8p"]
@@ -11,8 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://ddxbrcsjx0o0o" path="res://scenes/ui/experience_bar.tscn" id="2_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://c1uhh50jw4tax" path="res://scenes/manager/experience_manager.tscn" id="4_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnvo8bt817t86" path="res://scenes/manager/upgrade_manager.tscn" id="6_b1x3f"]
+[ext_resource type="Script" uid="uid://lx6mm26twja7" path="res://resources/upgrades/ability_upgrade.gd" id="7_necax"]
+[ext_resource type="Resource" uid="uid://c33feax62wvk" path="res://resources/upgrades/axe_ability.tres" id="8_r4lks"]
+[ext_resource type="Resource" uid="uid://d4d4fm1xl5rwb" path="res://resources/upgrades/sword_damage.tres" id="9_pg34l"]
+[ext_resource type="Resource" uid="uid://6pijxfb1lnqr" path="res://resources/upgrades/sword_rate.tres" id="10_m4h2d"]
+[ext_resource type="Resource" uid="uid://bdds6yo6k4l4r" path="res://resources/upgrades/axe_damage.tres" id="11_p8abn"]
 [ext_resource type="TileSet" uid="uid://k1vl20h5hnow" path="res://resources/isometric_tile_set.tres" id="12_7smn1"]
+[ext_resource type="Resource" uid="uid://bmxyip86v4yhs" path="res://resources/upgrades/sword_area.tres" id="12_m4h2d"]
+[ext_resource type="Resource" uid="uid://dbxwlht8t2ief" path="res://resources/upgrades/rarity_config.tres" id="12_r4lks"]
 [ext_resource type="Shader" uid="uid://dydsqmi0u7fkb" path="res://shaders/vignette_effect.gdshader" id="12_raeie"]
+[ext_resource type="Resource" uid="uid://btkgocxuche20" path="res://resources/upgrades/axe_rate.tres" id="13_p8abn"]
 [ext_resource type="PackedScene" uid="uid://c6m01wrbkaoxs" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="13_th5th"]
 
 [sub_resource type="Environment" id="Environment_th5th"]
@@ -37,7 +45,16 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 [node name="ExperienceManager" parent="." instance=ExtResource("4_yyfjg")]
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_b1x3f")]
+upgrade_pool_dict = Dictionary[String, ExtResource("7_necax")]({
+"upgrade_axe_ability": ExtResource("8_r4lks"),
+"upgrade_axe_damage": ExtResource("11_p8abn"),
+"upgrade_axe_rate": ExtResource("13_p8abn"),
+"upgrade_sword_area": ExtResource("12_m4h2d"),
+"upgrade_sword_damage": ExtResource("9_pg34l"),
+"upgrade_sword_rate": ExtResource("10_m4h2d")
+})
 experience_manager = NodePath("../ExperienceManager")
+rarity_config = ExtResource("12_r4lks")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
 position_smoothing_speed = 10.0

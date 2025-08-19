@@ -4,7 +4,10 @@
 
 [resource]
 script = ExtResource("1_pyxp1")
-id = "sword_rate"
-max_quantity = 5
-name = "Sword Rate"
-description = "Spawn sword 10% fastera"
+id = "sword_area"
+name = "Sword Area"
+rarity = 0
+description = "Sword has 10% more attack area"
+max_quantity = 10
+type = 0
+weight_override = 0

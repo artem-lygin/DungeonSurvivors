@@ -48,8 +48,9 @@ func on_timer_timeout() -> void:
 	if player == null: return
 
 	# Instantiate basic enemy node into the scene
-	var enemy_scene = enemy_table.pick_item()
+	var enemy_scene: PackedScene = enemy_table.pick_item() as PackedScene
 	var enemy: Node2D = enemy_scene.instantiate() as Node2D
+	enemy.name = "BasicEnemy_%d" % get_tree().get_nodes_in_group("enemy").size()
 
 	var entities_layer: Variant = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer == null: return

@@ -6,13 +6,19 @@ extends Node2D
 var player_light_radius: int = 240
 var current_player_light_radius: int
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
 	## Tourch light effect
 	#TODO Set in _ready and call method to change the size
-	current_player_light_radius = int(player_light_texture.get_width()/2)
+	current_player_light_radius = round(player_light_texture.get_width() / 2.0)
 	player_light_texture.width = player_light_radius * 2
 	player_light_texture.height = player_light_radius
+
+	player_light.texture = player_light_texture as Texture2D
+
+func _process(_delta: float) -> void:
+
 	if (player_light_radius != current_player_light_radius) && (player_light_texture != null):
+		print("Light radius is updated")
 		player_light.texture = player_light_texture as Texture2D
 
 	# Tourch light flickering

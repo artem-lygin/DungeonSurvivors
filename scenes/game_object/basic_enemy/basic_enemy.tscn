@@ -106,7 +106,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_pcrk2")]
-drop_persentage = 0.35
+drop_persentage = 1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "enemy_sprite") instance=ExtResource("2_bq7hi")]

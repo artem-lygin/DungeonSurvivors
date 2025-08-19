@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RarityConfig" load_steps=2 format=3 uid="uid://dbxwlht8t2ief"]
+
+[ext_resource type="Script" uid="uid://cvo66yxhli2d6" path="res://resources/upgrades/rarity_config.gd" id="1_ggmnt"]
+
+[resource]
+script = ExtResource("1_ggmnt")
+common_weight = 50
+uncommon_weight = 40
+rare_weight = 30
+epic_weight = 20
+legendary_weight = 10
+metadata/_custom_type_script = "uid://cvo66yxhli2d6"

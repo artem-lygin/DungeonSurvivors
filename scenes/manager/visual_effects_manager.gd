@@ -2,6 +2,7 @@ extends Node2D
 
 @export var player_light_component: PackedScene
 @export var exp_collected_vfx_component: PackedScene
+@export var player_sprite: Sprite2D
 
 
 func _ready() -> void:
@@ -26,4 +27,4 @@ func _on_experience_vial_collected(_number: float) -> void:
 	var exp_collected_vfx_instance: Node2D = exp_collected_vfx_component.instantiate() as Node2D
 	if exp_collected_vfx_instance == null: return
 
-	player.add_child.call_deferred(exp_collected_vfx_instance)
+	player.add_child(exp_collected_vfx_instance)

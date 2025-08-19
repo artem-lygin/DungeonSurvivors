@@ -8,6 +8,7 @@ var hit_flash_material: Resource = preload("res://scenes/component/hit_flash_com
 var hit_flash_tween: Tween
 var hit_flash_tween_duration: float = 0.25
 
+
 func _ready() -> void:
 	health_component.health_changed.connect(_on_health_changed)
 	sprite.material = hit_flash_material.duplicate()

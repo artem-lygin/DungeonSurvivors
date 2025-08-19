@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cthov7vesnsm3"]
+
+[ext_resource type="Shader" uid="uid://bhwlamay4mvbs" path="res://resources/shaders/exp_collected_player_effect.gdshader" id="1_138k8"]
+
+[resource]
+shader = ExtResource("1_138k8")
+shader_parameter/outline_color = Color(0.327524, 0.47832, 0.980439, 1)
+shader_parameter/outline_width = 2.0
+shader_parameter/effect_duration = 1.0
+shader_parameter/start_time = 0.0
+shader_parameter/progress = 0.019
+shader_parameter/wave_height = 0.1
