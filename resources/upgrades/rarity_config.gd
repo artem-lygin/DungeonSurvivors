@@ -7,6 +7,8 @@ class_name RarityConfig
 @export var rare_weight: int = 30
 @export var epic_weight: int = 20
 @export var legendary_weight: int = 10
+@export var holy_weight: int = 1
+@export var cursed_weight: int = 1
 
 func to_dict() -> Dictionary:
 	# Uses AbilityUpgrade.ItemRarity enum as keys
@@ -16,4 +18,6 @@ func to_dict() -> Dictionary:
 		AbilityUpgrade.ItemRarity.RARE: max(rare_weight, 0),
 		AbilityUpgrade.ItemRarity.EPIC: max(epic_weight, 0),
 		AbilityUpgrade.ItemRarity.LEGENDARY: max(legendary_weight, 0),
+		AbilityUpgrade.ItemRarity.HOLY: max(holy_weight, 0),
+		AbilityUpgrade.ItemRarity.CURSED: max(cursed_weight, 0),
 	}

@@ -49,7 +49,6 @@ func _process(delta: float) -> void:
 func get_movement_vector() -> Vector2:
 	var x_movement: float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y_movement: float = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	#TODO Add fix for isometric movement: Y vector impact should be devided by factor 2
 	return Vector2(x_movement, y_movement)
 
 

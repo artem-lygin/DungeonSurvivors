@@ -24,10 +24,12 @@ func _ready() -> void:
 			add_to_weighttable(upgrade_pool_dict[item_key])
 
 
+func is_upgrade_owned(upgrade: AbilityUpgrade) -> bool:
+	return current_upgrades.has(upgrade.id)
+
+
 func can_be_obtained(upgrade: AbilityUpgrade) -> bool:
-	if upgrade.dependency == null:
-		return true
-	return current_upgrades.has(upgrade.dependency)
+	return upgrade.dependency == null or is_upgrade_owned(upgrade.dependency)
 
 
 func add_to_weighttable(upgrade: AbilityUpgrade) -> void:
@@ -39,18 +41,16 @@ func add_to_weighttable(upgrade: AbilityUpgrade) -> void:
 	upgrade_pool.add_item(upgrade, weight)
 
 
-# Adding upgrade to weightTable
+# Adding dependent upgrades from pool to weightTable
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade) -> void:
-	#if chosen_upgrade.id == upgrade_pool_dict["upgrade_axe_ability"].id:
-		#add_to_weighttable(upgrade_pool_dict["upgrade_axe_damage"])
-		#add_to_weighttable(upgrade_pool_dict["upgrade_axe_rate"])
 	for candidate: AbilityUpgrade in upgrade_pool_dict.values():
-		if candidate == null: continue
+		if candidate == null:
+			continue
 
 		var dependency: AbilityUpgrade = candidate.dependency
 		# Is candidate depends on chosen_upgrade?
-		if dependency != null and (dependency == chosen_upgrade):
-			if not current_upgrades.has(candidate):
+		if dependency != null and dependency == chosen_upgrade:
+			if not current_upgrades.has(candidate.id):
 				add_to_weighttable(candidate)
 
 

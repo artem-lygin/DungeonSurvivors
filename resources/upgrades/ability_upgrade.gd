@@ -6,7 +6,9 @@ enum ItemRarity {
 	UNCOMMON,
 	RARE,
 	EPIC,
-	LEGENDARY
+	LEGENDARY,
+	HOLY,
+	CURSED
 	}
 
 enum ItemType {
