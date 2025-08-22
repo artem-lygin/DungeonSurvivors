@@ -1,3 +1,4 @@
+@icon("res://assets/godot/icons/Icon_HealthComponent.svg")
 extends Node
 class_name HealthComponent
 
