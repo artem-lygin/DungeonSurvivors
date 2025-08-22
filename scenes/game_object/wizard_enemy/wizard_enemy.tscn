@@ -121,6 +121,7 @@ health_component = NodePath("../HealthComponent")
 enemy_sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_865ah")]
+max_health = 30.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_qct4f")]
 unique_name_in_owner = true

@@ -10,10 +10,11 @@ extends Node
 
 var upgrades_available: int = 3 # Count of overall available upgrades for each levelup
 
-var dependecies_upgrades: Dictionary = {} # Store Upgrades other upgrades depends on
 var current_upgrades: Dictionary = {}
 
 var upgrade_pool: WeightedTable = WeightedTable.new()
+
+# TODO Might need to be reworked to use AbilityUpgrade.id as key in upgrade_pool_dict: Dictionary
 
 func _ready() -> void:
 	experience_manager.level_up.connect(on_level_up)
@@ -25,7 +26,19 @@ func _ready() -> void:
 
 
 func is_upgrade_owned(upgrade: AbilityUpgrade) -> bool:
-	return current_upgrades.has(upgrade.id)
+	if upgrade == null:
+		push_error("Upgrade is null and cannot be checked if it's owned")
+		return false
+
+	for ownd_upgrade: AbilityUpgrade in current_upgrades.values():
+		var owned: AbilityUpgrade = ownd_upgrade as AbilityUpgrade
+		if owned == null:
+			continue
+
+		if owned == upgrade or (owned.id != "" and owned.id == upgrade.id):
+			return true
+
+	return false
 
 
 func can_be_obtained(upgrade: AbilityUpgrade) -> bool:

@@ -77,25 +77,25 @@ tile_set = ExtResource("12_7smn1")
 y_sort_enabled = true
 
 [node name="ExperianceVial" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(380, 189)
+position = Vector2(388, 196)
 
 [node name="ExperianceVial2" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(437, 289)
+position = Vector2(451, 214)
 
 [node name="ExperianceVial3" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(204, 303)
+position = Vector2(517, 213)
 
 [node name="ExperianceVial4" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(62, 202)
+position = Vector2(484, 180)
 
 [node name="ExperianceVial5" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(308, 72)
+position = Vector2(437, 167)
 
 [node name="ExperianceVial6" parent="Entities" instance=ExtResource("13_th5th")]
 position = Vector2(524, 156)
 
 [node name="ExperianceVial7" parent="Entities" instance=ExtResource("13_th5th")]
-position = Vector2(573, 310)
+position = Vector2(562, 184)
 
 [node name="Player" parent="Entities" instance=ExtResource("1_hyk8p")]
 unique_name_in_owner = true

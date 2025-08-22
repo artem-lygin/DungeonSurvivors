@@ -1,5 +1,5 @@
 extends Area2D
-# Script handles weapon's hitbox 
+# Script handles weapon's hitbox
 
 class_name HitboxComponent
 
