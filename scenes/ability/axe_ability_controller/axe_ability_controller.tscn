@@ -6,8 +6,9 @@
 [node name="AxeAbiltyController" type="Node"]
 script = ExtResource("1_pxip5")
 axe_ability_scene = ExtResource("2_xuccq")
+rate_additional_perc = 0.25
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AxeAbilityTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 3.5
+wait_time = 0.1
 autostart = true

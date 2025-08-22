@@ -5,16 +5,16 @@ const MAX_RANGE = 150
 @export var sword_ability_scene: PackedScene
 
 @export_group("Sword Damage")
-@export_range (1.0, 100.0) var base_damage: float = 5 #In Firebelly course called 'damage' and declared as variant
-@export var damage_gain_perc: float = .15 # 10 upgrades result 20 dmg
+@export_range (1.0, 100.0) var base_damage: float = 5
+@export var damage_gain_perc: float = .15 # 10 cumulative upgrades result 20 dmg
 
 @export_group("Sword Rate")
 @export var base_wait_time: float = 1.5
-@export_range (0.0, 1.0) var rate_additional_perc: float = .1 # 10 upgrades result 0.52 cooldown
+@export_range (0.0, 1.0) var rate_additional_perc: float = .1 # 10 cumulative upgrades result 0.52 cooldown
 
 @export_group("Sword Area")
 @export_range (0.0, 100.0) var base_radius: float = 24.0
-@export_range (0.0, 1.0) var radius_gain_perc: float = .15 # 10 upgrades result 48 px radius
+@export_range (0.0, 1.0) var radius_gain_perc: float = .15 # 10 cumulative upgrades result 48 px radius
 
 @export_group("Upgrades IDs")
 @export var rate_upgrade: String = "sword_rate"
@@ -34,6 +34,7 @@ var radius_additional_perc: float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# TODO check if this sets ability time right
 	base_wait_time = sword_ability_timer.wait_time
 	sword_ability_timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
@@ -90,7 +91,7 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 		area_upgrade : apply_area_upgrade(current_upgrades)
 		_: return
 
-
+# TODO Recalculte sword rate applience to be cumulative (current_rate * decrease_pecent)
 func apply_rate_upgrade(_current_upgrades:Dictionary) -> void:
 	var upgrades_count: int = _current_upgrades[rate_upgrade]["quantity"]
 	var percent_reduction: float = upgrades_count * rate_additional_perc
@@ -101,7 +102,7 @@ func apply_rate_upgrade(_current_upgrades:Dictionary) -> void:
 		% [percent_reduction, upgrades_count, sword_ability_timer.wait_time]
 		)
 
-
+# TODO Recalculte sword damage applience to be cumulative (current_damage * increase_pecent)
 func apply_damage_upgrade(_current_upgrades:Dictionary) -> void:
 	var upgrades_count: int = _current_upgrades[damage_upgrade]["quantity"]
 	var damage_gain: float = upgrades_count * damage_gain_perc
@@ -111,7 +112,7 @@ func apply_damage_upgrade(_current_upgrades:Dictionary) -> void:
 		% [dmg_additional_perc, upgrades_count, base_damage * dmg_additional_perc]
 		)
 
-
+# TODO Recalculte sword area applience to be cumulative (current_area * increase_pecent)
 func apply_area_upgrade(_current_upgrades:Dictionary) -> void:
 	var upgrades_count: int = _current_upgrades[area_upgrade]["quantity"]
 	var radius_multiplier: float = pow(1.0 + radius_gain_perc, upgrades_count)

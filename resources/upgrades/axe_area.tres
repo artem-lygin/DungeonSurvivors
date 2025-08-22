@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://dxav68hqoxm5l"]
+
+[ext_resource type="Resource" uid="uid://c33feax62wvk" path="res://resources/upgrades/axe_ability.tres" id="1_sgvh7"]
+[ext_resource type="Script" uid="uid://lx6mm26twja7" path="res://resources/upgrades/ability_upgrade.gd" id="2_ifpy8"]
+
+[resource]
+script = ExtResource("2_ifpy8")
+id = "axe_area"
+name = "Axe Area"
+rarity = 1
+description = "Axe hit area is +15% "
+max_quantity = 10
+type = 0
+weight_override = 0
+dependency = ExtResource("1_sgvh7")
