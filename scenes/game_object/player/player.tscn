@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=14 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
@@ -95,10 +95,6 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rix40"]
 light_mode = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-shadow_offset = Vector2(0, 2)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss5pk"]
 bg_color = Color(0.262745, 0.882353, 0.701961, 1)
 border_width_left = 1
@@ -158,7 +154,6 @@ offset_right = 16.0
 offset_bottom = -18.0
 pivot_offset = Vector2(16, 2)
 theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_tj6oj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ss5pk")
 max_value = 1.0
 value = 0.5

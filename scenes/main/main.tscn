@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://mfc4mmjxx8ub"]
+[gd_scene load_steps=24 format=4 uid="uid://mfc4mmjxx8ub"]
 
 [ext_resource type="PackedScene" uid="uid://h8hnoe34gtmb" path="res://scenes/ui/arena_timer_ui.tscn" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://k6mipbwcr22p" path="res://scenes/game_object/player/player.tscn" id="1_hyk8p"]
@@ -19,20 +19,11 @@
 [ext_resource type="TileSet" uid="uid://k1vl20h5hnow" path="res://resources/isometric_tile_set.tres" id="12_7smn1"]
 [ext_resource type="Resource" uid="uid://bmxyip86v4yhs" path="res://resources/upgrades/sword_area.tres" id="12_m4h2d"]
 [ext_resource type="Resource" uid="uid://dbxwlht8t2ief" path="res://resources/upgrades/rarity_config.tres" id="12_r4lks"]
-[ext_resource type="Shader" uid="uid://dydsqmi0u7fkb" path="res://shaders/vignette_effect.gdshader" id="12_raeie"]
 [ext_resource type="Resource" uid="uid://btkgocxuche20" path="res://resources/upgrades/axe_rate.tres" id="13_p8abn"]
 [ext_resource type="PackedScene" uid="uid://c6m01wrbkaoxs" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="13_th5th"]
 [ext_resource type="Resource" uid="uid://dxav68hqoxm5l" path="res://resources/upgrades/axe_area.tres" id="14_p8abn"]
 
 [sub_resource type="Environment" id="Environment_th5th"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxu8e"]
-shader = ExtResource("12_raeie")
-shader_parameter/alpha = 1.0
-shader_parameter/inner_radius = 0.252
-shader_parameter/outer_radius = 1.734
-shader_parameter/vignette_color = Color(0, 0, 0, 1)
-shader_parameter/smoothness = 0.102
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ouso4")
@@ -111,17 +102,6 @@ color = Color(0.206038, 0.159192, 0.306695, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_th5th")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_hxu8e")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="UserInterface" type="Node2D" parent="." groups=["ui_layer"]]
 

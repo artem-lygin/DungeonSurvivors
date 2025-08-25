@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ekd1t45xgbw6"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ekd1t45xgbw6"]
 
 [ext_resource type="Texture2D" uid="uid://wgydv3laewhn" path="res://assets/ui/ui.png" id="1_k5ytv"]
 [ext_resource type="FontFile" uid="uid://bwmrxu3day8yq" path="res://resources/theme/TinyUnicode.ttf" id="2_k5ytv"]
@@ -22,6 +22,18 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r233f"]
+bg_color = Color(0, 0.6, 0.858824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
 [resource]
 default_font = ExtResource("2_k5ytv")
 default_font_size = 16
@@ -30,6 +42,8 @@ AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_k5ytv")
 Label/constants/line_spacing = -3
 Label/fonts/font = ExtResource("2_k5ytv")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_ltdrk")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_tj6oj")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_r233f")
 TitleLabel/base_type = &"Label"
 TitleLabel/font_sizes/font_size = 20
 TitleLabel/fonts/font = ExtResource("3_ltdrk")

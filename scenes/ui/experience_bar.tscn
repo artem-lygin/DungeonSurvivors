@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddxbrcsjx0o0o"]
+[gd_scene load_steps=7 format=3 uid="uid://ddxbrcsjx0o0o"]
 
 [ext_resource type="Script" uid="uid://ctfctctgvpnar" path="res://scenes/ui/experience_bar.gd" id="1_ve36q"]
+[ext_resource type="Texture2D" uid="uid://vel7jw8cjf4l" path="res://assets/ui/expbar_background.png" id="2_cgmno"]
+[ext_resource type="Texture2D" uid="uid://jvncb7vxtci0" path="res://assets/ui/expbar_bar.png" id="3_v1lig"]
+[ext_resource type="Texture2D" uid="uid://gplpvowgyyj7" path="res://assets/ui/exp_cout_bg.png" id="4_v1lig"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmm3j"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+[sub_resource type="Curve" id="Curve_cgmno"]
+_data = [Vector2(0.00984251, 0.544944), 0.0, 1.6198, 0, 0, Vector2(0.545276, 0.960674), -1.61248, -1.61248, 0, 0, Vector2(0.992565, 0), -0.0314928, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r233f"]
 bg_color = Color(0, 0.6, 0.858824, 1)
@@ -14,23 +18,123 @@ border_width_bottom = 2
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="ExperienceBar" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ve36q")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+light_mask = 0
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/margin_bottom = 16
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
-custom_minimum_size = Vector2(0, 8)
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(240, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+value = 0.5
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_cgmno")
+texture_progress = ExtResource("3_v1lig")
+
+[node name="ExpUpdatedEffect" type="CPUParticles2D" parent="MarginContainer/VBoxContainer/TextureProgressBar"]
+unique_name_in_owner = true
+position = Vector2(120, 4)
+emitting = false
+amount = 32
+lifetime = 12.65
+one_shot = true
+explosiveness = 0.3
+randomness = 1.0
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(10, 4)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -80)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = 25.0
+angular_velocity_max = 160.0
+linear_accel_min = 1.0
+linear_accel_max = 10.0
+damping_max = 24.0
+angle_min = 381.6
+angle_max = 418.5
+scale_amount_min = 0.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_cgmno")
+color = Color(0.294118, 0.631373, 1, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+custom_minimum_size = Vector2(240, 8)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_gmm3j")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r233f")
 max_value = 1.0
 value = 0.5
 show_percentage = false
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(320, 60)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(160, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+light_mask = 0
+position = Vector2(160, 41)
+texture = ExtResource("4_v1lig")
+
+[node name="Label" type="Label" parent="Control"]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -26.0
+offset_right = 11.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(11, 13)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0.12549, 0.0313726, 0.0862745, 1)
+theme_override_constants/outline_size = 2
+text = "99"
+horizontal_alignment = 1

@@ -6,6 +6,7 @@
 [node name="AxeAbiltyController" type="Node"]
 script = ExtResource("1_pxip5")
 axe_ability_scene = ExtResource("2_xuccq")
+base_damage = 30.0
 rate_additional_perc = 0.25
 
 [node name="AxeAbilityTimer" type="Timer" parent="."]

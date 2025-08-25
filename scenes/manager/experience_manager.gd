@@ -3,10 +3,11 @@ extends Node
 signal experience_updated(current_experiance: float, target_experiance: float)
 signal level_up(new_level: int)
 
+@onready var current_level: int = 1
+
 const TARGET_EXPERIENCE_GROWTH = 5
 
 var current_experience: int = 0
-var current_level: int = 1
 var target_experience: int = 5
 
 func _ready() -> void:

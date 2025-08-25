@@ -111,7 +111,8 @@ func on_level_up(_current_level: int) -> void:
 
 	var upgrade_screen_instance: Node = upgrade_screen_scene.instantiate()
 	var ui_layer: Node = GameUtils.get_ui()
-	ui_layer.add_child(upgrade_screen_instance)
+	ui_layer.add_child(upgrade_screen_instance, true)
+	ui_layer.move_child(upgrade_screen_instance, 0)
 
 	var chosen_upgrades: Array = pick_upgrades()
 	upgrade_screen_instance.set_ability_upgrades(chosen_upgrades as Array[AbilityUpgrade])

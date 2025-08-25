@@ -104,6 +104,7 @@ unique_name_in_owner = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_isd1k")]
 unique_name_in_owner = true
+max_health = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_pcrk2")]
 drop_persentage = 1.0
