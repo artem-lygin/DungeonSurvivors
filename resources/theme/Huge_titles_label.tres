@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://co5twl1xfepkx"]
+
+[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/Fleischmann Gotisch PT Regular.otf" id="1_ebutx"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_ebutx")
+font_size = 60
+font_color = Color(0.441172, 0.653875, 1, 1)
+outline_size = 8
+outline_color = Color(0.0866604, 0.0175133, 0.0558693, 1)

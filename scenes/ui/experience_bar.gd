@@ -3,10 +3,10 @@ extends CanvasLayer
 @export var experience_manager: Node
 @export var mobile_size: bool = false
 
-@onready var progress_bar_simple: ProgressBar = $%ProgressBar
 @onready var progress_bar: TextureProgressBar = $%TextureProgressBar
 @onready var update_effect: CPUParticles2D = %ExpUpdatedEffect
 @onready var level_label: Label = %Label
+@onready var margin_container: MarginContainer = $MarginContainer
 
 
 var tween_time: float = .15
@@ -17,7 +17,10 @@ func _ready() -> void:
 	level_label.text = str(experience_manager.current_level)
 
 	progress_bar.value = 0
-	progress_bar_simple.value = 0
+
+	if mobile_size:
+		progress_bar.custom_minimum_size = Vector2(120, 8)
+		margin_container.add_theme_constant_override("margin_bottom", 48)
 
 	update_effect.position = Vector2(0, 6)
 	update_effect.lifetime = tween_time * 4
@@ -34,8 +37,6 @@ func on_experience_updated(current_experience: float, target_experience: float) 
 	progressbar_tween.parallel()
 	progressbar_tween.tween_property(progress_bar, "value", percentage, tween_time)\
 	.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
-
-	progress_bar_simple.value = percentage
 
 	progressbar_tween.tween_property(progress_bar, "tint_progress", Color(1.2, 1.6, 2.0), tween_time)
 	progressbar_tween.chain()
@@ -54,22 +55,28 @@ func on_experience_updated(current_experience: float, target_experience: float) 
 func on_level_up(level: int) -> void:
 	level_label.text = str(level)
 	var tween: Tween = create_tween()
+	var progressbar_tween: Tween = create_tween()
 	#var label_pos: Vector2 = level_label.global_position
 
 	#tween.set_parallel()
 	#tween.tween_property(level_label, "global_position", label_pos + (Vector2.UP * 20), level_up_tween_time
 	#).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(level_label, "scale", Vector2(2.5, 2.5), level_up_tween_time
+	tween.tween_property(level_label, "scale", Vector2(3.5, 3.5), level_up_tween_time
 	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 
 	#tween.chain()
-	tween.tween_interval(0.3)
+	tween.tween_interval(0.5)
 
 	#tween.set_parallel()
 	#tween.tween_property(level_label, "global_position", label_pos, level_up_tween_time
 	#).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(level_label, "scale", Vector2(1.0, 1.0), level_up_tween_time
 	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
+
+	progressbar_tween.tween_property(progress_bar, "tint_under", Color(3.2, 4.6, 5.0), level_up_tween_time / 2)
+	tween.tween_interval(0.1)
+	progressbar_tween.tween_property(progress_bar, "tint_under", Color(1.0, 1.0, 1.0), level_up_tween_time * 2)
+
 
 func emit_effect() -> void:
 	update_effect.emitting = true

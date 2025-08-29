@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddxbrcsjx0o0o"]
+[gd_scene load_steps=6 format=3 uid="uid://ddxbrcsjx0o0o"]
 
 [ext_resource type="Script" uid="uid://ctfctctgvpnar" path="res://scenes/ui/experience_bar.gd" id="1_ve36q"]
 [ext_resource type="Texture2D" uid="uid://vel7jw8cjf4l" path="res://assets/ui/expbar_background.png" id="2_cgmno"]
@@ -8,14 +8,6 @@
 [sub_resource type="Curve" id="Curve_cgmno"]
 _data = [Vector2(0.00984251, 0.544944), 0.0, 1.6198, 0, 0, Vector2(0.545276, 0.960674), -1.61248, -1.61248, 0, 0, Vector2(0.992565, 0), -0.0314928, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r233f"]
-bg_color = Color(0, 0.6, 0.858824, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="ExperienceBar" type="CanvasLayer"]
 process_mode = 3
@@ -31,12 +23,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
 unique_name_in_owner = true
 light_mask = 0
 custom_minimum_size = Vector2(240, 8)
@@ -53,8 +40,9 @@ stretch_margin_right = 2
 stretch_margin_bottom = 2
 texture_under = ExtResource("2_cgmno")
 texture_progress = ExtResource("3_v1lig")
+metadata/_edit_use_anchors_ = true
 
-[node name="ExpUpdatedEffect" type="CPUParticles2D" parent="MarginContainer/VBoxContainer/TextureProgressBar"]
+[node name="ExpUpdatedEffect" type="CPUParticles2D" parent="MarginContainer/TextureProgressBar"]
 unique_name_in_owner = true
 position = Vector2(120, 4)
 emitting = false
@@ -82,53 +70,30 @@ scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_cgmno")
 color = Color(0.294118, 0.631373, 1, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-light_mask = 0
-custom_minimum_size = Vector2(240, 8)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-mouse_filter = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_r233f")
-max_value = 1.0
-value = 0.5
-show_percentage = false
-
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="MarginContainer"]
 custom_minimum_size = Vector2(320, 60)
-layout_mode = 3
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Control"]
+light_mask = 0
+position = Vector2(320, 57)
+texture = ExtResource("4_v1lig")
+
+[node name="Label" type="Label" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -60.0
-offset_right = 160.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(160, 60)
-
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
-light_mask = 0
-position = Vector2(160, 41)
-texture = ExtResource("4_v1lig")
-
-[node name="Label" type="Label" parent="Control"]
-unique_name_in_owner = true
-light_mask = 0
-custom_minimum_size = Vector2(22, 0)
-layout_mode = 2
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -11.0
-offset_top = -26.0
+offset_top = -10.0
 offset_right = 11.0
-offset_bottom = -13.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(11, 13)
@@ -136,5 +101,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_colors/font_outline_color = Color(0.12549, 0.0313726, 0.0862745, 1)
 theme_override_constants/outline_size = 2
-text = "99"
+text = "88"
 horizontal_alignment = 1
