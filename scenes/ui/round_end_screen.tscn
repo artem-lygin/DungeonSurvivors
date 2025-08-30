@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dea1g5jmvjlp"]
+[gd_scene load_steps=9 format=3 uid="uid://dea1g5jmvjlp"]
 
 [ext_resource type="Script" uid="uid://dxboyitski1jl" path="res://scenes/ui/round_end_screen.gd" id="1_gkmea"]
-[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/Fleischmann Gotisch PT Regular.otf" id="2_nccol"]
+[ext_resource type="LabelSettings" uid="uid://co5twl1xfepkx" path="res://resources/theme/Huge_titles_label.tres" id="2_nccol"]
 
 [sub_resource type="Animation" id="Animation_bd1lb"]
 length = 0.001
@@ -62,14 +62,6 @@ _data = {
 [sub_resource type="Theme" id="Theme_g2bvh"]
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_nccol")
 
-[sub_resource type="LabelSettings" id="LabelSettings_g2bvh"]
-line_spacing = 0.0
-font = ExtResource("2_nccol")
-font_size = 60
-font_color = Color(0.897749, 0.624166, 0.587814, 1)
-outline_size = 8
-outline_color = Color(0.0866604, 0.0175133, 0.0558693, 1)
-
 [node name="RoundEndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_gkmea")
@@ -124,8 +116,8 @@ theme_override_constants/separation = 15
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Victory!"
-label_settings = SubResource("LabelSettings_g2bvh")
+text = "Glory to the Hero!"
+label_settings = ExtResource("2_nccol")
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -135,16 +127,19 @@ text = "You won this round"
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 4
 alignment = 2
 
 [node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Quit"

@@ -1,3 +1,4 @@
+@icon("res://assets/godot/icons/Icon_VelocityComponent.svg")
 extends Node
 class_name VelocityComponent
 

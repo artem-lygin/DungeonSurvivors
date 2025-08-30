@@ -1,3 +1,4 @@
+@icon("res://assets/godot/icons/Icon_HurtboxComponent.svg")
 extends Area2D
 class_name HurboxComponent
 

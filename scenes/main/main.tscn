@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://mfc4mmjxx8ub"]
+[gd_scene load_steps=26 format=4 uid="uid://mfc4mmjxx8ub"]
 
 [ext_resource type="PackedScene" uid="uid://h8hnoe34gtmb" path="res://scenes/ui/arena_timer_ui.tscn" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://k6mipbwcr22p" path="res://scenes/game_object/player/player.tscn" id="1_hyk8p"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://c431ihilkkqai" path="res://resources/tileset.tres" id="2_iuonh"]
 [ext_resource type="PackedScene" uid="uid://cwi0jcmkmjto5" path="res://scenes/manager/arena_time_manager.tscn" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://ddxbrcsjx0o0o" path="res://scenes/ui/experience_bar.tscn" id="2_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://dvujeilll2vrm" path="res://scenes/ui/vignette.tscn" id="3_s17dp"]
 [ext_resource type="PackedScene" uid="uid://c1uhh50jw4tax" path="res://scenes/manager/experience_manager.tscn" id="4_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnvo8bt817t86" path="res://scenes/manager/upgrade_manager.tscn" id="6_b1x3f"]
 [ext_resource type="Script" uid="uid://lx6mm26twja7" path="res://resources/upgrades/ability_upgrade.gd" id="7_necax"]
@@ -22,12 +23,15 @@
 [ext_resource type="Resource" uid="uid://btkgocxuche20" path="res://resources/upgrades/axe_rate.tres" id="13_p8abn"]
 [ext_resource type="PackedScene" uid="uid://c6m01wrbkaoxs" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="13_th5th"]
 [ext_resource type="Resource" uid="uid://dxav68hqoxm5l" path="res://resources/upgrades/axe_area.tres" id="14_p8abn"]
+[ext_resource type="Resource" uid="uid://c6l8yvbk4bobx" path="res://resources/upgrades/player_speed.tres" id="15_p8abn"]
 
 [sub_resource type="Environment" id="Environment_th5th"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ouso4")
 round_end_screen = ExtResource("2_blune")
+
+[node name="Vignette" parent="." instance=ExtResource("3_s17dp")]
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_ow5a4")]
 
@@ -42,6 +46,7 @@ upgrade_pool_dict = Dictionary[String, ExtResource("7_necax")]({
 "upgrade_axe_area": ExtResource("14_p8abn"),
 "upgrade_axe_damage": ExtResource("11_p8abn"),
 "upgrade_axe_rate": ExtResource("13_p8abn"),
+"upgrade_player_speed": ExtResource("15_p8abn"),
 "upgrade_sword_area": ExtResource("12_m4h2d"),
 "upgrade_sword_damage": ExtResource("9_pg34l"),
 "upgrade_sword_rate": ExtResource("10_m4h2d")

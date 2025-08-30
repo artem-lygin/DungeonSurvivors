@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 120
-const ACCELERATION_SMOOTHING: int = 25
-
-@onready var damage_interval_timer: Timer = $%DamageIntervalTimer
+# COMPONENTS -----------------------------------------------
 @onready var health_component: Node = $%HealthComponent
+@onready var velocity_component: VelocityComponent = $VelocityComponent
+
+# NODES ----------------------------------------------------
+@onready var damage_interval_timer: Timer = $%DamageIntervalTimer
 @onready var enemies_collision_area: Area2D = $%EnemiesCollisionArea2D
 @onready var health_bar: ProgressBar = $%HealthBar #progressbar
 @onready var abilities: Node = $%Abilities
@@ -12,8 +13,11 @@ const ACCELERATION_SMOOTHING: int = 25
 @onready var visuals_node: Node2D = $Visuals
 
 var number_colliding_bodies: int = 0
+var base_speed: float
 
 func _ready() -> void:
+	base_speed = velocity_component.max_speed
+
 	# player_base_color = player_light.color
 	enemies_collision_area.body_entered.connect(on_body_entered)
 	enemies_collision_area.body_exited.connect(on_body_exited)
@@ -30,11 +34,9 @@ func _process(delta: float) -> void:
 	var movement_vector: Vector2 = get_movement_vector() # Raw vectors
 	var direction: Vector2 = movement_vector.normalized() # Normalisation forces movement vectors be 1
 	var iso_direction: Vector2 = IsoUtils.to_isometric_direction(direction) # simple transformation
-	var target_velocity: Vector2 = iso_direction * MAX_SPEED
 
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
-
-	move_and_slide()
+	velocity_component.accelerate_in_direction(iso_direction)
+	velocity_component.move(self)
 
 	if movement_vector.x != 0 or movement_vector.y != 0:
 		animation_player.play("walk")
@@ -77,20 +79,16 @@ func on_damage_interval_timer_timeout() -> void:
 
 
 func on_health_changed() -> void:
+	GameEvents.emit_player_damaged()
 	update_health_display()
 
 # If picked ability is "Ability" class then instantiate to a Abilities of the Player
-func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary) -> void:
-	if not ability_upgrade is Ability:
-		return
-
-	var ability: Ability = ability_upgrade as Ability
-	abilities.add_child(ability.ability_controller_scene.instantiate())
-
-
-#func _on_experience_vial_collected(_number: float) -> void:
-	##print("Exp collect effect should be emitted")
-	#exp_collect_effect.emitting = true
+func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+	if ability_upgrade is Ability:
+		var ability: Ability = ability_upgrade as Ability
+		abilities.add_child(ability.ability_controller_scene.instantiate())
+	elif ability_upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
 
 
 func _draw() -> void:
