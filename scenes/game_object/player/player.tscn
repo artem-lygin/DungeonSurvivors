@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://k6mipbwcr22p"]
+[gd_scene load_steps=23 format=3 uid="uid://k6mipbwcr22p"]
 
 [ext_resource type="Texture2D" uid="uid://2dixgn3jymr5" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://7l7eibkrx25u" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c15x3unpqnu58" path="res://scenes/component/velocity_component.tscn" id="2_pknkg"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
 [ext_resource type="PackedScene" uid="uid://cph6t02p6slry" path="res://scenes/manager/visual_effects_manager.tscn" id="3_tj6oj"]
+[ext_resource type="AudioStream" uid="uid://cqvkhq48hsohd" path="res://assets/audio/hurt1.ogg" id="7_28lpv"]
+[ext_resource type="AudioStream" uid="uid://bf4dfr5kxh7gn" path="res://assets/audio/hurt2.ogg" id="8_gbew5"]
+[ext_resource type="AudioStream" uid="uid://ck63f16ujdcmf" path="res://assets/audio/hurt4.ogg" id="9_oxhc3"]
+[ext_resource type="AudioStream" uid="uid://y7ed5poyihn3" path="res://assets/audio/hurt3.ogg" id="10_mxgtx"]
+[ext_resource type="AudioStream" uid="uid://cisgrrrxo6bxh" path="res://assets/audio/footstep_concrete_001.ogg" id="11_oxhc3"]
+[ext_resource type="AudioStream" uid="uid://c8ebe6m0tqijk" path="res://assets/audio/footstep_concrete_002.ogg" id="12_mxgtx"]
 
 [sub_resource type="Animation" id="Animation_rix40"]
 length = 0.001
@@ -115,6 +121,18 @@ radius = 7.0
 radius = 8.0
 height = 16.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l1g56"]
+streams_count = 4
+stream_0/stream = ExtResource("7_28lpv")
+stream_1/stream = ExtResource("8_gbew5")
+stream_2/stream = ExtResource("9_oxhc3")
+stream_3/stream = ExtResource("10_mxgtx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_llc7q"]
+streams_count = 2
+stream_0/stream = ExtResource("11_oxhc3")
+stream_1/stream = ExtResource("12_mxgtx")
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 motion_mode = 1
@@ -213,3 +231,13 @@ metadata/_aseprite_wizard_interface_config_ = {
 visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_tj6oj")
+
+[node name="HitAudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_l1g56")
+
+[node name="WalkAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_llc7q")
+volume_db = -8.0
+bus = &"environment"

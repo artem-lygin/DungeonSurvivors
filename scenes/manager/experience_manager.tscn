@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1uhh50jw4tax"]
+[gd_scene load_steps=3 format=3 uid="uid://c1uhh50jw4tax"]
 
 [ext_resource type="Script" uid="uid://f1wubamv8gpg" path="res://scenes/manager/experience_manager.gd" id="1_ehrg6"]
+[ext_resource type="PackedScene" uid="uid://cvr00ivhrshlq" path="res://scenes/component/LootAudioComponent.tscn" id="2_f5s7v"]
 
 [node name="ExperienceManager" type="Node"]
 script = ExtResource("1_ehrg6")
+
+[node name="LootAudioComponent" parent="." node_paths=PackedStringArray("expiriance_manager") instance=ExtResource("2_f5s7v")]
+expiriance_manager = NodePath("..")

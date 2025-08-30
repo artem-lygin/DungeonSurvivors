@@ -11,9 +11,14 @@ extends CharacterBody2D
 @onready var abilities: Node = $%Abilities
 @onready var animation_player: AnimationPlayer = $%AnimationPlayer
 @onready var visuals_node: Node2D = $Visuals
+@onready var hit_stream_player: AudioStreamPlayer2D = $%HitAudioPlayer2D
+@onready var walk_audio_stream_player_2d: AudioStreamPlayer2D = $%WalkAudioStreamPlayer2D
+
 
 var number_colliding_bodies: int = 0
 var base_speed: float
+var step_timer: float = 0
+var footstep_interval: float = .15
 
 func _ready() -> void:
 	base_speed = velocity_component.max_speed
@@ -38,11 +43,23 @@ func _process(delta: float) -> void:
 	velocity_component.accelerate_in_direction(iso_direction)
 	velocity_component.move(self)
 
+
+	# Footsteps Sound
+	if movement_vector != Vector2.ZERO:
+		step_timer -= delta
+		if step_timer <= 0.0:
+			play_footstep()
+			step_timer = footstep_interval
+	else:
+		step_timer = 0.0
+
+	# Animation Sprite2D
 	if movement_vector.x != 0 or movement_vector.y != 0:
 		animation_player.play("walk")
 	else:
 		animation_player.play("RESET")
 
+	# Flipping the Sprite2D
 	var move_sign: Variant = sign(movement_vector.x)
 	if move_sign != 0:
 		visuals_node.scale = Vector2(move_sign, 1)
@@ -80,6 +97,7 @@ func on_damage_interval_timer_timeout() -> void:
 
 func on_health_changed() -> void:
 	GameEvents.emit_player_damaged()
+	hit_stream_player.play()
 	update_health_display()
 
 # If picked ability is "Ability" class then instantiate to a Abilities of the Player
@@ -90,6 +108,10 @@ func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
 
+
+func play_footstep() -> void:
+	walk_audio_stream_player_2d.pitch_scale = randf_range(0.95, 1.05)
+	walk_audio_stream_player_2d.play()
 
 func _draw() -> void:
 	if DebugUtils.debug_mode:
