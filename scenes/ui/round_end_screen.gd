@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var restart_button: Button = $%RestartButton
-@onready var quit_button: Button = $%QuitButton
+@onready var restart_button: Button = $%RestartSoundButton
+@onready var quit_button: Button = $%QuitSoundButton
 @onready var title_label: Label = $%TitleLabel
 @onready var description_label: Label = $%DescriptionLabel
 @onready var panel_container: PanelContainer = $%PanelContainer
@@ -24,8 +24,7 @@ func _ready() -> void:
 
 func set_defeat() -> void:
 
-	title_label.text = "Defeat"
-	#title_label.add_theme_color_override("font_color", Color.INDIAN_RED)
+	title_label.text = "Defeat!"
 	title_label.label_settings.font_color = Color.INDIAN_RED
 	description_label.text = "You've lost this round"
 
