@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0l1n00qdh2i4"]
+
+[ext_resource type="AudioStream" uid="uid://i7ixw2o51dgd" path="res://assets/audio/music/8-BIT Fantasy - Depths of the Crypt.ogg" id="1_gfljd"]
+[ext_resource type="AudioStream" uid="uid://cqo6prfvjyinr" path="res://assets/audio/music/8-BIT Fantasy - Dusty Tombs.ogg" id="2_vsocv"]
+[ext_resource type="AudioStream" uid="uid://c5daaioeddw8i" path="res://assets/audio/music/8-BIT Fantasy - Rust and Rituals.ogg" id="3_d7m3y"]
+[ext_resource type="AudioStream" uid="uid://dijnhtavngt12" path="res://assets/audio/music/8-BIT Fantasy - Torchlit Descent.ogg" id="4_tc55k"]
+[ext_resource type="AudioStream" uid="uid://mfbax5v84qcw" path="res://assets/audio/music/8-BIT Fantasy - Tread Carefully....ogg" id="5_5klvy"]
+[ext_resource type="Script" uid="uid://b4wbt3bkg6lkx" path="res://scenes/autoload/music_player.gd" id="6_vsocv"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d7m3y"]
+streams_count = 5
+stream_0/stream = ExtResource("1_gfljd")
+stream_1/stream = ExtResource("2_vsocv")
+stream_2/stream = ExtResource("3_d7m3y")
+stream_3/stream = ExtResource("4_tc55k")
+stream_4/stream = ExtResource("5_5klvy")
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_d7m3y")
+volume_db = -12.0
+autoplay = true
+bus = &"music"
+script = ExtResource("6_vsocv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true

@@ -15,12 +15,17 @@ run/main_scene="uid://mfc4mmjxx8ub"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
+
 [autoload]
 
 GameEvents="*res://scenes/autoload/game_events.tscn"
 IsoUtils="*res://scenes/autoload/utilities/iso_utils.gd"
 DebugUtils="*res://scenes/autoload/utilities/debug_utils.gd"
 GameUtils="*res://scripts/game_utils.gd"
+MusicPlayer="*res://scenes/autoload/music_player.tscn"
 
 [debug]
 

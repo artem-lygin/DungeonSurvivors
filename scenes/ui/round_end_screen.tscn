@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dea1g5jmvjlp"]
+[gd_scene load_steps=12 format=3 uid="uid://dea1g5jmvjlp"]
 
 [ext_resource type="Script" uid="uid://dxboyitski1jl" path="res://scenes/ui/round_end_screen.gd" id="1_gkmea"]
+[ext_resource type="AudioStream" uid="uid://chjhx7xnrawst" path="res://assets/audio/jingles/ESM_Peaceful_Win_1.wav" id="2_bbm5r"]
 [ext_resource type="LabelSettings" uid="uid://co5twl1xfepkx" path="res://resources/theme/Huge_titles_label.tres" id="2_nccol"]
+[ext_resource type="AudioStream" uid="uid://b0pj3h8un4ae8" path="res://assets/audio/jingles/ESM_Bass_Clue_5.wav" id="3_7wsxv"]
 [ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="3_g2bvh"]
 
 [sub_resource type="Animation" id="Animation_bd1lb"]
@@ -18,6 +20,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_eg2gl"]
 resource_name = "in"
@@ -33,6 +47,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_xpnye"]
@@ -66,11 +92,15 @@ PanelContainer/styles/panel = SubResource("StyleBoxEmpty_nccol")
 [node name="RoundEndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_gkmea")
+sound_win = ExtResource("2_bbm5r")
+sound_lose = ExtResource("3_7wsxv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_k541j")
 }
+autoplay = "in"
 
 [node name="ColorRectOverlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -144,3 +174,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -6.0
+bus = &"sfx"

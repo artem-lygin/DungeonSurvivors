@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c15x3unpqnu58" path="res://scenes/component/velocity_component.tscn" id="2_pknkg"]
 [ext_resource type="PackedScene" uid="uid://clwq7mpdgjsib" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
 [ext_resource type="PackedScene" uid="uid://cph6t02p6slry" path="res://scenes/manager/visual_effects_manager.tscn" id="3_tj6oj"]
-[ext_resource type="AudioStream" uid="uid://cqvkhq48hsohd" path="res://assets/audio/hurt1.ogg" id="7_28lpv"]
-[ext_resource type="AudioStream" uid="uid://bf4dfr5kxh7gn" path="res://assets/audio/hurt2.ogg" id="8_gbew5"]
-[ext_resource type="AudioStream" uid="uid://ck63f16ujdcmf" path="res://assets/audio/hurt4.ogg" id="9_oxhc3"]
-[ext_resource type="AudioStream" uid="uid://y7ed5poyihn3" path="res://assets/audio/hurt3.ogg" id="10_mxgtx"]
-[ext_resource type="AudioStream" uid="uid://cisgrrrxo6bxh" path="res://assets/audio/footstep_concrete_001.ogg" id="11_oxhc3"]
-[ext_resource type="AudioStream" uid="uid://c8ebe6m0tqijk" path="res://assets/audio/footstep_concrete_002.ogg" id="12_mxgtx"]
+[ext_resource type="AudioStream" uid="uid://cqvkhq48hsohd" path="res://assets/audio/player/hurt1.ogg" id="7_28lpv"]
+[ext_resource type="AudioStream" uid="uid://bf4dfr5kxh7gn" path="res://assets/audio/player/hurt2.ogg" id="8_gbew5"]
+[ext_resource type="AudioStream" uid="uid://ck63f16ujdcmf" path="res://assets/audio/player/hurt4.ogg" id="9_oxhc3"]
+[ext_resource type="AudioStream" uid="uid://y7ed5poyihn3" path="res://assets/audio/player/hurt3.ogg" id="10_mxgtx"]
+[ext_resource type="AudioStream" uid="uid://cisgrrrxo6bxh" path="res://assets/audio/player/footstep_concrete_001.ogg" id="11_oxhc3"]
+[ext_resource type="AudioStream" uid="uid://c8ebe6m0tqijk" path="res://assets/audio/player/footstep_concrete_002.ogg" id="12_mxgtx"]
 
 [sub_resource type="Animation" id="Animation_rix40"]
 length = 0.001
