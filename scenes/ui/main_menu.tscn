@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=4 uid="uid://dngm4qevppc5f"]
+
+[ext_resource type="TileSet" uid="uid://k1vl20h5hnow" path="res://resources/isometric_tile_set.tres" id="1_1g8jr"]
+[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/Fleischmann Gotisch PT Regular.otf" id="1_fe2o3"]
+[ext_resource type="Script" uid="uid://clt2ekg3pugj" path="res://scenes/ui/main_menu.gd" id="1_m1kxf"]
+[ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="4_x2yvf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m1kxf"]
+line_spacing = 0.0
+font = ExtResource("1_fe2o3")
+font_size = 60
+font_color = Color(0.713726, 0.258824, 0.388235, 1)
+outline_size = 8
+outline_color = Color(0.314861, 0.122142, 0.23483, 1)
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_m1kxf")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAJACEAAQAAAAAAAAAJAB8AAQAAAAAAAAAJAB0AAQAAAAAAAAAJABsAAQAAAAAAAAAJABkAAQAAAAAAAAAKABoAAQAAAAAAAAAKABsAAQAAAAAAAAALABwAAQAAAAAAAAALAB0AAQAAAAAAAAAMAB4AAQAAAAAAAAALAB8AAQAAAAAAAAALACAAAQAAAAAAAAAKACEAAQAAAAAAAAAKACIAAQAAAAAAAAAJACMAAQAAAAAAAAAJACIAAQAAAAAAAAAHAB4AAQAAAAAAAAAHAB8AAQAAAAAAAAAIACAAAQAAAAAAAAAIACEAAQAAAAAAAAAHAB0AAQAAAAAAAAAIABwAAQAAAAAAAAAIABsAAQAAAAAAAAAJABoAAQAAAAAAAAAIAB4AAQAAAAAAAAAIAB8AAQAAAAAAAAAJAB4AAQAAAAAAAAAIAB0AAQAAAAAAAAAJABwAAQAAAAAAAAAKAB0AAQAAAAAAAAAKAB4AAQAAAAAAAAAKAB8AAQAAAAAAAAAKACAAAQAAAAAAAAALAB4AAQAAAAAAAAAJACUAAQAAAAAAAAAKACQAAQAAAAAAAAAKACMAAQAAAAAAAAAJACQAAQAAAAAAAAAIACMAAQAAAAAAAAAMAB8AAQAAAAAAAAAMAB0AAQAAAAAAAAANAB4AAQAAAAAAAAAGAB8AAQAAAAAAAAAGAB0AAQAAAAAAAAAGAB4AAQAAAAAAAAAOACIAAQAAAAAAAAAPABwAAQAAAAAAAAAOABsAAQAAAAAAAAAEACEAAQAAAAAAAAADAB4AAQAAAAAAAAADAB0AAQAAAAAAAAACABoAAQAAAAAAAAACABsAAQAAAAAAAAABACQAAQAAAAAAAAASACQAAQAAAAAAAAARABcAAQAAAAAAAAARABgAAQAAAAAAAAAPABUAAQAAAAAAAAAFABYAAQAAAAAAAAA=")
+tile_set = ExtResource("1_1g8jr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game name"
+label_settings = SubResource("LabelSettings_m1kxf")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayButton" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_x2yvf")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_x2yvf")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_x2yvf")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Quit"

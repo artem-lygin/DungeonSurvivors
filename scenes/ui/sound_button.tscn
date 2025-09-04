@@ -23,5 +23,6 @@ text = "Sound Button"
 script = ExtResource("1_21tmt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_6afcn")
 bus = &"sfx"

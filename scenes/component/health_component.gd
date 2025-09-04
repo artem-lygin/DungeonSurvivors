@@ -9,6 +9,7 @@ signal health_changed # emith from "damage"
 
 var current_health: float
 
+
 func _ready() -> void:
 	current_health = max_health
 

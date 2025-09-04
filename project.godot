@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Firebelly2DSurvivorsGameCourse"
-run/main_scene="uid://mfc4mmjxx8ub"
+run/main_scene="uid://dngm4qevppc5f"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -56,8 +56,7 @@ folder_colors={
 "res://assets/": "orange",
 "res://resources/": "yellow",
 "res://scenes/": "teal",
-"res://scripts/": "blue",
-"res://shaders/": "purple"
+"res://scripts/": "blue"
 }
 
 [gui]

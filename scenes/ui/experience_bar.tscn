@@ -73,27 +73,29 @@ color = Color(0.294118, 0.631373, 1, 1)
 [node name="Control" type="Control" parent="MarginContainer"]
 custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Control"]
+[node name="CanvasGroup" type="CanvasGroup" parent="MarginContainer/Control"]
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Control/CanvasGroup"]
 light_mask = 0
-position = Vector2(320, 57)
+position = Vector2(160, 57)
 texture = ExtResource("4_v1lig")
 
-[node name="Label" type="Label" parent="MarginContainer/Control"]
+[node name="Label" type="Label" parent="MarginContainer/Control/CanvasGroup"]
 unique_name_in_owner = true
 light_mask = 0
 custom_minimum_size = Vector2(22, 0)
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_top = -10.0
-offset_right = 11.0
-offset_bottom = 3.0
+offset_left = 149.0
+offset_top = 50.0
+offset_right = 171.0
+offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(11, 13)
