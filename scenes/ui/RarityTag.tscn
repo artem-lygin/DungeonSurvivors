@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4ir4dl17kn0w"]
+
+[ext_resource type="Theme" uid="uid://ekd1t45xgbw6" path="res://resources/theme/default_theme.tres" id="2_n2lqv"]
+
+[node name="RarityLabel" type="Label"]
+light_mask = 0
+offset_right = 52.0
+offset_bottom = 12.0
+size_flags_horizontal = 4
+theme = ExtResource("2_n2lqv")
+theme_type_variation = &"RarityTagLabel"
+text = "ItemRarity"
+horizontal_alignment = 1

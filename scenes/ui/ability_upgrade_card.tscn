@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bw4l7punxsaj0"]
+[gd_scene load_steps=28 format=3 uid="uid://bw4l7punxsaj0"]
 
 [ext_resource type="Script" uid="uid://c7rt5dvlajcs3" path="res://scenes/ui/ability_upgrade_card.gd" id="1_8ur3e"]
-[ext_resource type="FontFile" uid="uid://b8ux8vtu40l33" path="res://resources/theme/Kingdom - Pixel Font v1_3.ttf" id="2_c4j7u"]
 [ext_resource type="AudioStream" uid="uid://cruaxo71dr6mk" path="res://assets/audio/ui/rollover1.ogg" id="2_ksxgh"]
 [ext_resource type="FontFile" uid="uid://bwmrxu3day8yq" path="res://resources/theme/TinyUnicode.ttf" id="2_m44y0"]
 [ext_resource type="AudioStream" uid="uid://dqtwtnvsilv6y" path="res://assets/audio/ui/rollover2.ogg" id="3_g40w5"]
@@ -13,6 +12,11 @@
 [ext_resource type="AudioStream" uid="uid://3hjmetl852np" path="res://assets/audio/ui/switch2.ogg" id="9_m713t"]
 [ext_resource type="AudioStream" uid="uid://d2viyfepavj6v" path="res://assets/audio/ui/switch4.ogg" id="10_gnty3"]
 [ext_resource type="AudioStream" uid="uid://fl76bf2coy1s" path="res://assets/audio/ui/switch3.ogg" id="11_vel0p"]
+[ext_resource type="PackedScene" uid="uid://d4ir4dl17kn0w" path="res://scenes/ui/RarityTag.tscn" id="12_ksxgh"]
+[ext_resource type="StyleBox" uid="uid://cbe7jqbh7v5uv" path="res://resources/theme/rarity_labels/stylebox_common.tres" id="12_r6bay"]
+[ext_resource type="StyleBox" uid="uid://de2xpomjgusau" path="res://resources/theme/rarity_labels/stylebox_uncommon.tres" id="13_ut4pq"]
+[ext_resource type="StyleBox" uid="uid://r0w8nxy1b8ns" path="res://resources/theme/rarity_labels/stylebox_rare.tres" id="14_m713t"]
+[ext_resource type="StyleBox" uid="uid://bp4q4v6oom1ae" path="res://resources/theme/rarity_labels/stylebox_legendary.tres" id="16_vel0p"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tshun"]
 random_pitch = 1.1
@@ -189,13 +193,16 @@ _data = {
 
 [node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
 light_mask = 0
-custom_minimum_size = Vector2(120, 150)
-offset_right = 120.0
-offset_bottom = 150.0
-pivot_offset = Vector2(60, 75)
+custom_minimum_size = Vector2(0, 160)
+offset_right = 156.0
+offset_bottom = 131.0
 script = ExtResource("1_8ur3e")
 hover_sounds = SubResource("AudioStreamRandomizer_tshun")
 select_sounds = SubResource("AudioStreamRandomizer_k6lq8")
+stylebox_common = ExtResource("12_r6bay")
+stylebox_uncommon = ExtResource("13_ut4pq")
+stylebox_rare = ExtResource("14_m713t")
+stylebox_legendary = ExtResource("16_vel0p")
 
 [node name="InteractionAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -210,47 +217,33 @@ libraries = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+light_mask = 0
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 6
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 light_mask = 0
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_c4j7u")
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"TitleLabel"
 text = "Name here"
 horizontal_alignment = 1
 
-[node name="RarityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="RarityTag" parent="MarginContainer/VBoxContainer" instance=ExtResource("12_ksxgh")]
 unique_name_in_owner = true
-light_mask = 0
-custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.197937, 0.197937, 0.197937, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.329412)
-theme_override_constants/line_spacing = -3
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_m44y0")
-theme_override_font_sizes/font_size = 16
-text = "Rarity"
-horizontal_alignment = 1
-autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"RarityTagPanelContainer"
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

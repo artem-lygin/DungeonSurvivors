@@ -5,8 +5,16 @@ signal selected
 @export var hover_sounds: AudioStreamRandomizer
 @export var select_sounds: AudioStreamRandomizer
 
+@export_category("Rarity Tags")
+@export var stylebox_common: Resource
+@export var stylebox_uncommon: Resource
+@export var stylebox_rare: Resource
+@export var stylebox_epic: Resource
+@export var stylebox_legendary: Resource
+
 @onready var name_label: Label = $%NameLabel
-@onready var rarity_label: Label = %RarityLabel
+#@onready var rarity_label: Label = %RarityLabel
+@onready var rarity_tag: Label = $%RarityTag
 @onready var description_label: Label = $%DescriptionLabel
 @onready var animation_player: AnimationPlayer = $%AnimationPlayer
 @onready var interaction_animation_player: AnimationPlayer = $%InteractionAnimationPlayer
@@ -25,6 +33,8 @@ func _ready() -> void:
 	self.gui_input.connect(on_gui_input)
 	self.mouse_entered.connect(on_mouse_entered)
 	self.mouse_exited.connect(on_mouse_exited)
+
+	self.pivot_offset = self.size / 2
 
 
 func on_gui_input(event: InputEvent) -> void:
@@ -74,7 +84,9 @@ func play_discard() -> void:
 
 func set_ability_upgrade(upgrade: AbilityUpgrade) -> void:
 	name_label.text = upgrade.name
-	rarity_label.text = upgrade.rarity_to_string().capitalize()
+	rarity_tag.text = upgrade.rarity_to_string().capitalize()
+	rarity_tag.add_theme_color_override("font_color", upgrade.get_rarity_color())
+	rarity_tag.add_theme_stylebox_override("normal", upgrade.get_rarity_stylebox())
 	description_label.text = upgrade.description
 
 

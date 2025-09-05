@@ -6,8 +6,8 @@
 script = ExtResource("1_04we8")
 id = "sword_damage"
 name = "Sword Damage"
-rarity = 0
-max_quantity = 0
-weight_rate = 1
-weight_override = 0
+rarity = 1
 description = "+15% damage amount"
+max_quantity = 0
+type = 0
+weight_override = 0
