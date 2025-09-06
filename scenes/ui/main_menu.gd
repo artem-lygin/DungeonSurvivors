@@ -7,11 +7,14 @@ extends CanvasLayer
 
 var options_scene: PackedScene = preload("uid://dxyobknrhjnct")
 
-
 func _ready() -> void:
 	play_button.pressed.connect(on_play_button_pressed)
 	options_button.pressed.connect(on_options_button_pressed)
 	quit_button.pressed.connect(on_quit_button_pressed)
+
+	# TODO Set audio to .75 on first load via gloabl variables
+	#AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("music"), .75)
+	#AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("sfx"), .75)
 
 
 func on_play_button_pressed() -> void:

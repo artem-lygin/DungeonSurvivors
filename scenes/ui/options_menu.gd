@@ -6,6 +6,7 @@ signal back_button_pressed
 @onready var music_slider: HSlider = %MusicSlider
 @onready var window_mode_button: SoundButton = %WindowModeButton
 @onready var back_button: SoundButton = %BackButton
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -14,10 +15,13 @@ func _ready() -> void:
 	window_mode_button.pressed.connect(on_window_mode_button_pressed)
 	back_button.pressed.connect(on_back_button_pressed)
 
-	set_bus_volume_percent("sfx", .75)
-	set_bus_volume_percent("music", .75)
-
 	update_display()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		on_back_button_pressed()
+		get_tree().root.set_input_as_handled()
 
 
 func update_display() -> void:
@@ -56,4 +60,5 @@ func on_window_mode_button_pressed() -> void:
 
 
 func on_back_button_pressed() -> void:
-	self.back_button_pressed.emit()
+	timer.start()
+	timer.timeout.connect(func() -> void: self.back_button_pressed.emit())

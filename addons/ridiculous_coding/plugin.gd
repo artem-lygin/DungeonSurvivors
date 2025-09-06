@@ -30,7 +30,7 @@ func _enter_tree():
 	dock = Dock.instantiate()
 	typing.connect(Callable(dock,"_on_typing"))
 	add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock)
-	
+
 
 func _exit_tree():
 	if dock:
@@ -42,21 +42,21 @@ func get_all_text_editors(parent : Node):
 	for child in parent.get_children():
 		if child.get_child_count():
 			get_all_text_editors(child)
-			
+
 		if child is TextEdit:
-			editors[child] = { 
-				"text": child.text, 
-				"line": child.get_caret_line() 
+			editors[child] = {
+				"text": child.text,
+				"line": child.get_caret_line()
 			}
-			
+
 			if child.caret_changed.is_connected(caret_changed):
 				child.caret_changed.disconnect(caret_changed)
 			child.caret_changed.connect(caret_changed.bind(child))
-			
+
 			if child.text_changed.is_connected(text_changed):
 				child.text_changed.disconnect(text_changed)
 			child.text_changed.connect(text_changed.bind(child))
-			
+
 			if child.gui_input.is_connected(gui_input):
 				child.gui_input.disconnect(gui_input)
 			child.gui_input.connect(gui_input)
@@ -72,20 +72,20 @@ func gui_input(event):
 func editor_script_changed(script):
 	var editor = get_editor_interface()
 	var script_editor = editor.get_script_editor()
-	
+
 	editors.clear()
 	get_all_text_editors(script_editor)
 
 
 func _process(delta):
 	var editor = get_editor_interface()
-	
+
 	if shake > 0:
 		shake -= delta
 		editor.get_base_control().position = Vector2(randf_range(-shake_intensity,shake_intensity), randf_range(-shake_intensity,shake_intensity))
 	else:
 		editor.get_base_control().position = Vector2.ZERO
-	
+
 	timer += delta
 	if (pitch_increase > 0.0):
 		pitch_increase -= delta * PITCH_DECREMENT
@@ -94,20 +94,20 @@ func _process(delta):
 func shake_screen(duration, intensity):
 	if shake > 0:
 		return
-		
+
 	shake = duration
 	shake_intensity = intensity
 
 
 func caret_changed(textedit):
 	var editor = get_editor_interface()
-	
+
 	if not editors.has(textedit):
 		# For some reason the editor instances all change
 		# when the file is saved so you need to reload them
 		editors.clear()
 		get_all_text_editors(editor.get_script_editor())
-		
+
 	editors[textedit]["line"] = textedit.get_caret_line()
 
 
@@ -115,12 +115,12 @@ func text_changed(textedit : TextEdit):
 	var line_height = textedit.get_line_height()
 	var pos = textedit.get_caret_draw_pos() + Vector2(0,-line_height/2.0)
 	emit_signal("typing")
-	
+
 	if editors.has(textedit):
 		# Deleting
 		if timer > 0.1 and len(textedit.text) < len(editors[textedit]["text"]):
 			timer = 0.0
-			
+
 			if dock.explosions:
 				# Draw the thing
 				var thing = Boom.instantiate()
@@ -129,15 +129,15 @@ func text_changed(textedit : TextEdit):
 				if dock.chars: thing.last_key = last_key
 				thing.sound = dock.sound
 				textedit.add_child(thing)
-				
+
 				if dock.shake:
 					# Shake
 					shake_screen(0.2, 10)
-		
+
 		# Typing
 		if timer > 0.02 and len(textedit.text) >= len(editors[textedit]["text"]):
 			timer = 0.0
-			
+
 			# Draw the thing
 			var thing = Blip.instantiate()
 			thing.pitch_increase = pitch_increase
@@ -148,11 +148,11 @@ func text_changed(textedit : TextEdit):
 			if dock.chars: thing.last_key = last_key
 			thing.sound = dock.sound
 			textedit.add_child(thing)
-			
+
 			if dock.shake:
 				# Shake
 				shake_screen(0.05, 5)
-			
+
 		# Newline
 		if textedit.get_caret_line() != editors[textedit]["line"]:
 			# Draw the thing
@@ -161,10 +161,10 @@ func text_changed(textedit : TextEdit):
 			thing.destroy = true
 			thing.blips = dock.blips
 			textedit.add_child(thing)
-			
+
 			if dock.shake:
 				# Shake
 				shake_screen(0.05, 5)
-	
+
 	editors[textedit]["text"] = textedit.text
 	editors[textedit]["line"] = textedit.get_caret_line()

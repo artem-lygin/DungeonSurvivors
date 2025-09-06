@@ -4,16 +4,7 @@ signal selected
 
 @export var hover_sounds: AudioStreamRandomizer
 @export var select_sounds: AudioStreamRandomizer
-
-@export_category("Rarity Tags")
-@export var stylebox_common: Resource
-@export var stylebox_uncommon: Resource
-@export var stylebox_rare: Resource
-@export var stylebox_epic: Resource
-@export var stylebox_legendary: Resource
-
 @onready var name_label: Label = $%NameLabel
-#@onready var rarity_label: Label = %RarityLabel
 @onready var rarity_tag: Label = $%RarityTag
 @onready var description_label: Label = $%DescriptionLabel
 @onready var animation_player: AnimationPlayer = $%AnimationPlayer

@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="4_hb1yv"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
-layer = 2
+process_mode = 3
+layer = 3
 script = ExtResource("1_c4822")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -102,3 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

@@ -14,6 +14,7 @@ outline_size = 8
 outline_color = Color(0.314861, 0.122142, 0.23483, 1)
 
 [node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_m1kxf")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

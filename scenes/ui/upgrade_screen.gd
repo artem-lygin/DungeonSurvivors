@@ -13,13 +13,6 @@ func _ready() -> void:
 	get_tree().paused = true
 	animation_player.play("in")
 
-	#var foreground: Node = GameUtils.get_foreground()
-	#var overlay_rect: ColorRect = color_rect_overlay.duplicate()
-#
-	#if foreground != null:
-		#color_rect_overlay.get_parent().remove_child(color_rect_overlay)
-		#foreground.add_child(overlay_rect)
-
 
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]) -> void:
 	var delay: float = 0
@@ -39,6 +32,6 @@ func set_ability_upgrades(upgrades: Array[AbilityUpgrade]) -> void:
 func on_upgrade_selected(upgrade: AbilityUpgrade) -> void:
 	upgrade_selected.emit(upgrade)
 	animation_player.play("out")
-	await  animation_player.animation_finished
+	await animation_player.animation_finished
 	get_tree().paused = false
 	queue_free()
