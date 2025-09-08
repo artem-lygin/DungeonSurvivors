@@ -18,6 +18,8 @@ func _ready() -> void:
 
 
 func on_play_button_pressed() -> void:
+	ScreenTransition.tranition()
+	await ScreenTransition.transition_halfway
 	get_tree().change_scene_to_file("uid://mfc4mmjxx8ub")
 
 

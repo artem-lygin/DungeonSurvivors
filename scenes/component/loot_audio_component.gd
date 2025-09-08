@@ -12,7 +12,8 @@ func _ready() -> void:
 
 func on_exp_vial_collected(_current_exp: float, _target_exp: float) -> void:
 	var player_node: Node2D = GameUtils.get_player() as Node2D
-	self.position = player_node.global_position
+	if player_node:
+		self.position = player_node.global_position
 	var ratio: float = 1.0
 
 	if _current_exp != 0:

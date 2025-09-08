@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bw4l7punxsaj0"]
+[gd_scene load_steps=24 format=3 uid="uid://bw4l7punxsaj0"]
 
 [ext_resource type="Script" uid="uid://c7rt5dvlajcs3" path="res://scenes/ui/ability_upgrade_card.gd" id="1_8ur3e"]
 [ext_resource type="AudioStream" uid="uid://cruaxo71dr6mk" path="res://assets/audio/ui/rollover1.ogg" id="2_ksxgh"]
@@ -13,10 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://d2viyfepavj6v" path="res://assets/audio/ui/switch4.ogg" id="10_gnty3"]
 [ext_resource type="AudioStream" uid="uid://fl76bf2coy1s" path="res://assets/audio/ui/switch3.ogg" id="11_vel0p"]
 [ext_resource type="PackedScene" uid="uid://d4ir4dl17kn0w" path="res://scenes/ui/RarityTag.tscn" id="12_ksxgh"]
-[ext_resource type="StyleBox" uid="uid://cbe7jqbh7v5uv" path="res://resources/theme/rarity_labels/stylebox_common.tres" id="12_r6bay"]
-[ext_resource type="StyleBox" uid="uid://de2xpomjgusau" path="res://resources/theme/rarity_labels/stylebox_uncommon.tres" id="13_ut4pq"]
-[ext_resource type="StyleBox" uid="uid://r0w8nxy1b8ns" path="res://resources/theme/rarity_labels/stylebox_rare.tres" id="14_m713t"]
-[ext_resource type="StyleBox" uid="uid://bp4q4v6oom1ae" path="res://resources/theme/rarity_labels/stylebox_legendary.tres" id="16_vel0p"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tshun"]
 random_pitch = 1.1
@@ -193,16 +189,15 @@ _data = {
 
 [node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
 light_mask = 0
-custom_minimum_size = Vector2(0, 160)
-offset_right = 156.0
-offset_bottom = 131.0
+custom_minimum_size = Vector2(160, 160)
+offset_left = -0.0875422
+offset_top = 0.087447
+offset_right = 159.912
+offset_bottom = 160.087
+pivot_offset = Vector2(80.0002, 80)
 script = ExtResource("1_8ur3e")
 hover_sounds = SubResource("AudioStreamRandomizer_tshun")
 select_sounds = SubResource("AudioStreamRandomizer_k6lq8")
-stylebox_common = ExtResource("12_r6bay")
-stylebox_uncommon = ExtResource("13_ut4pq")
-stylebox_rare = ExtResource("14_m713t")
-stylebox_legendary = ExtResource("16_vel0p")
 
 [node name="InteractionAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -218,6 +213,7 @@ libraries = {
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 light_mask = 0
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
 
@@ -231,7 +227,7 @@ unique_name_in_owner = true
 light_mask = 0
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
-text = "Name here"
+text = "Long name here"
 horizontal_alignment = 1
 
 [node name="RarityTag" parent="MarginContainer/VBoxContainer" instance=ExtResource("12_ksxgh")]
@@ -279,3 +275,6 @@ text = "Select"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2

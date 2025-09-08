@@ -41,6 +41,8 @@ func set_defeat() -> void:
 
 func on_restart_button_pressed() -> void:
 	get_tree().paused = false
+	ScreenTransition.tranition()
+	await ScreenTransition.transition_halfway
 	get_tree().reload_current_scene()
 
 

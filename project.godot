@@ -26,6 +26,7 @@ IsoUtils="*res://scenes/autoload/utilities/iso_utils.gd"
 DebugUtils="*res://scenes/autoload/utilities/debug_utils.gd"
 GameUtils="*res://scripts/game_utils.gd"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
+ScreenTransition="*res://scenes/ui/screen_transition.tscn"
 
 [debug]
 
