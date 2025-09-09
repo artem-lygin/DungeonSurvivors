@@ -23,3 +23,4 @@ func _on_player_death() -> void:
 	var round_end_screen_instance: Node = round_end_screen.instantiate()
 	add_child(round_end_screen_instance)
 	round_end_screen_instance.set_defeat()
+	MetaProgression.save_to_file()

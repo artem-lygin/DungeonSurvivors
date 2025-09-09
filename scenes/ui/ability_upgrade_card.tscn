@@ -189,12 +189,14 @@ _data = {
 
 [node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
 light_mask = 0
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(140, 160)
 offset_left = -0.0875422
 offset_top = 0.087447
-offset_right = 159.912
+offset_right = 139.912
 offset_bottom = 160.087
 pivot_offset = Vector2(80.0002, 80)
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_8ur3e")
 hover_sounds = SubResource("AudioStreamRandomizer_tshun")
 select_sounds = SubResource("AudioStreamRandomizer_k6lq8")
@@ -215,7 +217,10 @@ libraries = {
 light_mask = 0
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_vertical = 0
 mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -275,6 +280,3 @@ text = "Select"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-layout_mode = 2

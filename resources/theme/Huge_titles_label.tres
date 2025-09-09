@@ -6,5 +6,5 @@
 line_spacing = 0.0
 font = ExtResource("1_ebutx")
 font_size = 60
-font_color = Color(0.441172, 0.653875, 1, 1)
-outline_color = Color(0.0866604, 0.0175133, 0.0558693, 1)
+font_color = Color(0.836455, 0.638618, 0.376504, 1)
+outline_color = Color(0.941035, 0.801037, 0.62592, 1)

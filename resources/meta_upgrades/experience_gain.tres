@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://ck03ppjabcr2j"]
+
+[ext_resource type="Script" uid="uid://dh0rhb3g2mgt" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_j6tqy"]
+
+[resource]
+script = ExtResource("1_j6tqy")
+id = "experience_gain"
+max_quantity = 5
+title = "Deamon's favor"
+description = "Increase experience vial drop by 15%"
+metadata/_custom_type_script = "uid://dh0rhb3g2mgt"

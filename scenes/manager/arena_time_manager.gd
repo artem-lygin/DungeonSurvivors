@@ -31,3 +31,4 @@ func get_time_elapsed() -> float:
 func on_arena_timer_timeout() -> void:
 	var round_end_screen_instance: Node = round_end_screen_scene.instantiate()
 	add_child(round_end_screen_instance)
+	MetaProgression.save_to_file()

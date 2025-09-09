@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dea1g5jmvjlp"]
+[gd_scene load_steps=12 format=3 uid="uid://dea1g5jmvjlp"]
 
 [ext_resource type="Script" uid="uid://dxboyitski1jl" path="res://scenes/ui/round_end_screen.gd" id="1_gkmea"]
 [ext_resource type="AudioStream" uid="uid://chjhx7xnrawst" path="res://assets/audio/jingles/ESM_Peaceful_Win_1.wav" id="2_bbm5r"]
 [ext_resource type="LabelSettings" uid="uid://co5twl1xfepkx" path="res://resources/theme/Huge_titles_label.tres" id="2_nccol"]
 [ext_resource type="AudioStream" uid="uid://b0pj3h8un4ae8" path="res://assets/audio/jingles/ESM_Bass_Clue_5.wav" id="3_7wsxv"]
 [ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="3_g2bvh"]
-[ext_resource type="Shader" uid="uid://be4cjbj488veg" path="res://resources/shaders/title_label_shader.gdshader" id="4_7wsxv"]
 
 [sub_resource type="Animation" id="Animation_bd1lb"]
 length = 0.001
@@ -90,13 +89,6 @@ _data = {
 [sub_resource type="Theme" id="Theme_g2bvh"]
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_nccol")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbm5r"]
-shader = ExtResource("4_7wsxv")
-shader_parameter/base_color = Color(0.713726, 0.258824, 0.388235, 1)
-shader_parameter/flame_color = Color(0.245834, 0.410484, 0.753681, 1)
-shader_parameter/speed = 2.134
-shader_parameter/noise_scale = 16.364
-
 [node name="RoundEndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_gkmea")
@@ -158,7 +150,6 @@ theme_override_constants/separation = 15
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_bbm5r")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Glory to the Hero!"

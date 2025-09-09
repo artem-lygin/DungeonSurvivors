@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Firebelly2DSurvivorsGameCourse"
 run/main_scene="uid://dngm4qevppc5f"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Angels&Deamons"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +29,7 @@ DebugUtils="*res://scenes/autoload/utilities/debug_utils.gd"
 GameUtils="*res://scripts/game_utils.gd"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
 ScreenTransition="*res://scenes/ui/screen_transition.tscn"
+MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 
 [debug]
 
