@@ -25,6 +25,6 @@ func on_area_entered(other_area: Area2D) -> void:
 	GameUtils.get_ui().add_child(floating_text)
 
 	floating_text.global_position = global_position + (Vector2.UP * 16)
-	floating_text.start(str(hitbox_component.damage_amount).pad_decimals(0))
+	floating_text.pop_damage_text(str(hitbox_component.damage_amount).pad_decimals(0))
 
 	hit.emit()

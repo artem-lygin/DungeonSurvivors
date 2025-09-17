@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://bhb5tdlf0vnt0"]
+
+[ext_resource type="Script" uid="uid://dh0rhb3g2mgt" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_r8eyn"]
+
+[resource]
+script = ExtResource("1_r8eyn")
+id = "dummy_one"
+title = "Angel's promise"
+rarity = 1
+description = "Dodge chanse increased by 10%"
+resource_cost = 100
+max_quantity = 5
+type = 0
+weight_override = 0
+metadata/_custom_type_script = "uid://dh0rhb3g2mgt"

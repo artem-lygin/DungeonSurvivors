@@ -14,12 +14,12 @@ config/name="Firebelly2DSurvivorsGameCourse"
 run/main_scene="uid://dngm4qevppc5f"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Angels&Deamons"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://resources/default_bus_layout.tres"
+buses/default_bus_layout="res://resources/sound/default_bus_layout.tres"
 
 [autoload]
 
@@ -51,7 +51,7 @@ movie_writer/movie_file="/Volumes/EXTHOME/Users/artemlygin/Downloads/movie.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [file_customization]
 
@@ -62,6 +62,12 @@ folder_colors={
 "res://scenes/": "teal",
 "res://scripts/": "blue"
 }
+
+[game]
+
+debug/meta_progress/meta_currency_balance=600
+debug/meta_progress/override_meta_currency_balance=true
+demo/max_is_cool=true
 
 [gui]
 

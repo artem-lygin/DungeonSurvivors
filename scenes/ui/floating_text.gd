@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass
 
 
-func start(text: String) -> void:
+func pop_damage_text(text: String) -> void:
 	label.text = text
 	var in_tween: Tween = create_tween()
 

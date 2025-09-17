@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://co5twl1xfepkx"]
 
-[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/Fleischmann Gotisch PT Regular.otf" id="1_ebutx"]
+[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/fonts/Fleischmann Gotisch PT Regular.otf" id="1_ebutx"]
 
 [resource]
 line_spacing = 0.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://3cancls37lt6"]
 
 [ext_resource type="Script" uid="uid://dehrdqlnnyo00" path="res://scenes/experiments/character_body_2d.gd" id="1_uejuy"]
-[ext_resource type="TileSet" uid="uid://c431ihilkkqai" path="res://resources/tileset.tres" id="2_gki2u"]
+[ext_resource type="TileSet" uid="uid://c431ihilkkqai" path="res://resources/tilesets/tileset.tres" id="2_gki2u"]
 [ext_resource type="Script" uid="uid://dekhyc5dda1i0" path="res://scenes/experiments/camera_2d.gd" id="3_gki2u"]
 
 [sub_resource type="Gradient" id="Gradient_svc8w"]

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cncitrmrx1s0"]
+
+[ext_resource type="Shader" uid="uid://c574ykupaeyij" path="res://resources/materials/card_mythical_effect.gdshader" id="1_1e3hn"]
+
+[resource]
+shader = ExtResource("1_1e3hn")
+shader_parameter/displacement_strength = 4.0
+shader_parameter/double_vision_strength = 2.0
+shader_parameter/edge_width = 0.15
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_velocity = 0.5

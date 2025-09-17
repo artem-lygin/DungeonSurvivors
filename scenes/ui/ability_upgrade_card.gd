@@ -25,6 +25,8 @@ func _ready() -> void:
 	self.mouse_entered.connect(on_mouse_entered)
 	self.mouse_exited.connect(on_mouse_exited)
 
+	#self.material.set_shader_parameter("outline_visible", 0.0)
+
 	self.pivot_offset = self.size / 2
 
 
@@ -43,10 +45,12 @@ func on_mouse_entered() -> void:
 	audio_player.stream = hover_sounds
 	audio_player.play()
 	interaction_animation_player.play("hover")
+	#self.material.set_shader_parameter("outline_visible", 1.0)
 
 
 func on_mouse_exited() -> void:
 	pass
+	#self.material.set_shader_parameter("outline_visible", 0.0)
 
 
 func select_card() -> void:
@@ -75,10 +79,12 @@ func play_discard() -> void:
 
 func set_ability_upgrade(upgrade: AbilityUpgrade) -> void:
 	name_label.text = upgrade.name
-	rarity_tag.text = upgrade.rarity_to_string().capitalize()
-	rarity_tag.add_theme_color_override("font_color", upgrade.get_rarity_color())
-	rarity_tag.add_theme_stylebox_override("normal", upgrade.get_rarity_stylebox())
 	description_label.text = upgrade.description
+	rarity_tag.text = upgrade.rarity_to_string().capitalize()
+	self.add_theme_stylebox_override("panel", upgrade.get_card_stylebox())
+	rarity_tag.add_theme_color_override("font_color", upgrade.get_rarity_color())
+	rarity_tag.add_theme_stylebox_override("normal", upgrade.get_tag_stylebox())
+	self.material = upgrade.get_rarity_effect()
 
 
 func play_in(delay: float = 0) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://dngm4qevppc5f"]
 
-[ext_resource type="TileSet" uid="uid://k1vl20h5hnow" path="res://resources/isometric_tile_set.tres" id="1_1g8jr"]
-[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/Fleischmann Gotisch PT Regular.otf" id="1_fe2o3"]
+[ext_resource type="TileSet" uid="uid://k1vl20h5hnow" path="res://resources/tilesets/isometric_tile_set.tres" id="1_1g8jr"]
+[ext_resource type="FontFile" uid="uid://bfslilswmffoy" path="res://resources/theme/fonts/Fleischmann Gotisch PT Regular.otf" id="1_fe2o3"]
 [ext_resource type="Script" uid="uid://clt2ekg3pugj" path="res://scenes/ui/main_menu.gd" id="1_m1kxf"]
 [ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="4_x2yvf"]
 

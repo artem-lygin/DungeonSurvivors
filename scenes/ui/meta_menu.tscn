@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7ffluwflkug4"]
+
+[ext_resource type="Script" uid="uid://bwg5ivqbvfskd" path="res://scenes/ui/meta_menu.gd" id="1_3vbab"]
+[ext_resource type="PackedScene" uid="uid://6o3475xagob5" path="res://scenes/ui/meta_upgrade_card.tscn" id="2_5fsrx"]
+[ext_resource type="Script" uid="uid://dh0rhb3g2mgt" path="res://resources/meta_upgrades/meta_upgrade.gd" id="3_xe1at"]
+[ext_resource type="Resource" uid="uid://ck03ppjabcr2j" path="res://resources/meta_upgrades/experience_gain.tres" id="4_tykgm"]
+[ext_resource type="Resource" uid="uid://bhb5tdlf0vnt0" path="res://resources/meta_upgrades/dummy_meta_upgrade.tres" id="5_xe1at"]
+[ext_resource type="Resource" uid="uid://bho4uycrtx05i" path="res://resources/meta_upgrades/dummy_2_meta_upgrade.tres" id="6_tykgm"]
+
+[node name="MetaMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 3
+script = ExtResource("1_3vbab")
+meta_upgrade_card_scene = ExtResource("2_5fsrx")
+meta_upgrades = Array[ExtResource("3_xe1at")]([ExtResource("4_tykgm"), ExtResource("5_xe1at"), ExtResource("6_tykgm")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="MarginContainerTitle" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainerTitle"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"TitleLabel"
+text = "Pick the upgrade"
+
+[node name="MarginContainerCards" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainerCards" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainerCards"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
