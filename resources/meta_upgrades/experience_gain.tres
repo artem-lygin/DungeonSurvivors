@@ -6,10 +6,7 @@
 script = ExtResource("1_j6tqy")
 id = "experience_gain"
 title = "Deamon's favor"
-rarity = 0
 description = "Increase experience vial drop by 15%"
 resource_cost = 50
 max_quantity = 5
-type = 0
-weight_override = 0
 metadata/_custom_type_script = "uid://dh0rhb3g2mgt"

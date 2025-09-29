@@ -4,12 +4,10 @@
 
 [resource]
 script = ExtResource("1_mdvph")
-id = "dummy_two"
-title = "Gabriel's quill"
-rarity = 3
-description = "All projectile weapons have penetration effect"
-resource_cost = 200
-max_quantity = 5
-type = 0
-weight_override = 0
+id = "prometheus_gift"
+title = "Prometheu's gift"
+rarity = 2
+description = "Expands base tourch light radius by 30%"
+resource_cost = 100
+max_quantity = 3
 metadata/_custom_type_script = "uid://dh0rhb3g2mgt"

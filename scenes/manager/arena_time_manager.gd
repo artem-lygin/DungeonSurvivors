@@ -5,12 +5,15 @@ signal arena_difficulty_increased(arena_difficulty: int)
 const DIFFICULTY_INTERVAL = 5
 
 @export var round_end_screen_scene: PackedScene
+@export var round_lasting: float = 240.0
 
 @onready var arena_timer: Timer = $%ArenaTimer
 
 var arena_difficulty: int = 0
 
 func _ready() -> void:
+	arena_timer.wait_time = round_lasting
+	arena_timer.start()
 	arena_timer.timeout.connect(on_arena_timer_timeout)
 
 

@@ -150,6 +150,7 @@ theme_override_constants/separation = 15
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+light_mask = 0
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Glory to the Hero!"
@@ -168,14 +169,16 @@ size_flags_vertical = 8
 theme_override_constants/separation = 4
 alignment = 2
 
-[node name="RestartSoundButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_g2bvh")]
+[node name="ContinueSoundButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_g2bvh")]
 unique_name_in_owner = true
+light_mask = 0
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Restart"
+text = "Continue"
 
 [node name="QuitSoundButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_g2bvh")]
 unique_name_in_owner = true
+light_mask = 0
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Quit"
+text = "Quit to menu"

@@ -24,12 +24,12 @@ buses/default_bus_layout="res://resources/sound/default_bus_layout.tres"
 [autoload]
 
 GameEvents="*res://scenes/autoload/game_events.tscn"
-IsoUtils="*res://scenes/autoload/utilities/iso_utils.gd"
 DebugUtils="*res://scenes/autoload/utilities/debug_utils.gd"
 GameUtils="*res://scripts/game_utils.gd"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
 ScreenTransition="*res://scenes/ui/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
+Paths="*res://scenes/autoload/paths_manager.gd"
 
 [debug]
 
@@ -65,9 +65,11 @@ folder_colors={
 
 [game]
 
-debug/meta_progress/meta_currency_balance=600
-debug/meta_progress/override_meta_currency_balance=true
+debug/meta_progress/meta_currency_balance=400
+debug/meta_progress/override_meta_currency_balance=false
 demo/max_is_cool=true
+debug/meta_progress/debug_log=false
+debug/meta_progress/debug_draw=false
 
 [gui]
 

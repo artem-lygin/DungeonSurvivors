@@ -8,4 +8,5 @@ func _ready() -> void:
 
 
 func on_button_pressed() -> void:
-	audio_stream_player.play()
+	if audio_stream_player and audio_stream_player.stream:
+		audio_stream_player.play()

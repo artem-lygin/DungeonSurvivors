@@ -6,8 +6,8 @@ extends CanvasLayer
 @onready var pause_menu_container: PanelContainer = %PauseMenuContainer
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-const OPTIONS_SCENE: PackedScene = preload("uid://dxyobknrhjnct")
-const MAIN_MENU: PackedScene = preload("uid://dngm4qevppc5f")
+const OPTIONS_SCENE: PackedScene = preload(Paths.OPTIONS_MENU_SCREEN)
+const MAIN_MENU: PackedScene = preload(Paths.MAIN_MENU_SCENE)
 
 var in_tween: Tween
 var out_tween: Tween

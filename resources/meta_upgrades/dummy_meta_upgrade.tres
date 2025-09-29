@@ -4,12 +4,10 @@
 
 [resource]
 script = ExtResource("1_r8eyn")
-id = "dummy_one"
+id = "angels_promise"
 title = "Angel's promise"
 rarity = 1
 description = "Dodge chanse increased by 10%"
-resource_cost = 100
+resource_cost = 75
 max_quantity = 5
-type = 0
-weight_override = 0
 metadata/_custom_type_script = "uid://dh0rhb3g2mgt"

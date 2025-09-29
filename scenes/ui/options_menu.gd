@@ -6,7 +6,6 @@ signal back_button_pressed
 @onready var music_slider: HSlider = %MusicSlider
 @onready var window_mode_button: SoundButton = %WindowModeButton
 @onready var back_button: SoundButton = %BackButton
-@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -60,5 +59,7 @@ func on_window_mode_button_pressed() -> void:
 
 
 func on_back_button_pressed() -> void:
-	timer.start()
-	timer.timeout.connect(func() -> void: self.back_button_pressed.emit())
+	get_tree().create_timer(0.05).timeout.connect(
+		func() -> void:
+			self.back_button_pressed.emit()
+			)

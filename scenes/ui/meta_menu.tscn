@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7ffluwflkug4"]
+[gd_scene load_steps=14 format=3 uid="uid://c7ffluwflkug4"]
 
 [ext_resource type="Script" uid="uid://bwg5ivqbvfskd" path="res://scenes/ui/meta_menu.gd" id="1_3vbab"]
 [ext_resource type="PackedScene" uid="uid://6o3475xagob5" path="res://scenes/ui/meta_upgrade_card.tscn" id="2_5fsrx"]
@@ -6,13 +6,87 @@
 [ext_resource type="Resource" uid="uid://ck03ppjabcr2j" path="res://resources/meta_upgrades/experience_gain.tres" id="4_tykgm"]
 [ext_resource type="Resource" uid="uid://bhb5tdlf0vnt0" path="res://resources/meta_upgrades/dummy_meta_upgrade.tres" id="5_xe1at"]
 [ext_resource type="Resource" uid="uid://bho4uycrtx05i" path="res://resources/meta_upgrades/dummy_2_meta_upgrade.tres" id="6_tykgm"]
+[ext_resource type="Resource" uid="uid://snjml7e1ryhy" path="res://resources/meta_upgrades/dummy_3_meta_upgrade.tres" id="7_orst0"]
+[ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="7_w0aax"]
+[ext_resource type="PackedScene" uid="uid://yyt406k35ev5" path="res://scenes/component/counter_ui_component.tscn" id="9_orst0"]
+
+[sub_resource type="Animation" id="Animation_bd1lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRectOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eg2gl"]
+resource_name = "in"
+length = 0.18
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRectOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xpnye"]
+resource_name = "out"
+length = 0.18
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRectOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k541j"]
+_data = {
+&"RESET": SubResource("Animation_bd1lb"),
+&"in": SubResource("Animation_eg2gl"),
+&"out": SubResource("Animation_xpnye")
+}
 
 [node name="MetaMenu" type="CanvasLayer"]
 process_mode = 3
 layer = 3
 script = ExtResource("1_3vbab")
 meta_upgrade_card_scene = ExtResource("2_5fsrx")
-meta_upgrades = Array[ExtResource("3_xe1at")]([ExtResource("4_tykgm"), ExtResource("5_xe1at"), ExtResource("6_tykgm")])
+meta_upgrades_pool = Array[ExtResource("3_xe1at")]([ExtResource("4_tykgm"), ExtResource("5_xe1at"), ExtResource("7_orst0"), ExtResource("6_tykgm")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_k541j")
+}
+autoplay = "in"
+
+[node name="ColorRectOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12549, 0.0313726, 0.0862745, 0.705882)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -22,29 +96,79 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/margin_top = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
 theme_override_constants/separation = 12
-
-[node name="MarginContainerTitle" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainerTitle"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"TitleLabel"
-text = "Pick the upgrade"
 
 [node name="MarginContainerCards" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="GridContainerCards" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainerCards"]
 unique_name_in_owner = true
+light_mask = 0
 layout_mode = 2
 columns = 4
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+light_mask = 0
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 0
+border_width = 0.0
+
+[node name="MarginContainerTitle" type="MarginContainer" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.5
+offset_right = 45.5
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 12
+
+[node name="Label" type="Label" parent="ReferenceRect/MarginContainerTitle"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"TitleLabel"
+text = "Upgrades store"
+
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BackButton" parent="ReferenceRect/MarginContainer/HBoxContainer" instance=ExtResource("7_w0aax")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
+
+[node name="BalanceCounter" parent="ReferenceRect/MarginContainer/HBoxContainer" instance=ExtResource("9_orst0")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResetButton" parent="ReferenceRect/MarginContainer/HBoxContainer" instance=ExtResource("7_w0aax")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Reset"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

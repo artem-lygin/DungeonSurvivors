@@ -103,7 +103,3 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
-one_shot = true

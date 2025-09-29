@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dldk3ohug3aew"]
+
+[ext_resource type="Texture2D" uid="uid://c11k7n0hi5moc" path="res://assets/ui/counter-bg.png" id="1_lr6ot"]
+[ext_resource type="Script" uid="uid://canoe0x3afctt" path="res://scenes/ui/count_gem.gd" id="2_3p6os"]
+[ext_resource type="Texture2D" uid="uid://skr5wql3e5ua" path="res://assets/ui/counter-gem.png" id="2_r23cq"]
+
+[node name="CountGem" type="TextureRect" groups=["owning_counter_gems"]]
+offset_right = 11.0
+offset_bottom = 11.0
+pivot_offset = Vector2(6, 6)
+texture = ExtResource("1_lr6ot")
+script = ExtResource("2_3p6os")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 11.0
+offset_bottom = 11.0
+pivot_offset = Vector2(6, 6)
+texture = ExtResource("2_r23cq")

@@ -58,6 +58,12 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Play"
 
+[node name="MetaStoreButton" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_x2yvf")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Upgrades"
+
 [node name="OptionsButton" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_x2yvf")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)

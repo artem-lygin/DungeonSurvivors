@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://snjml7e1ryhy"]
+
+[ext_resource type="Script" uid="uid://dh0rhb3g2mgt" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_x71pp"]
+
+[resource]
+script = ExtResource("1_x71pp")
+id = "gabriels_quill"
+title = "Gabriel's quill"
+rarity = 3
+description = "All projectile weapons have penetration effect"
+resource_cost = 200
+metadata/_custom_type_script = "uid://dh0rhb3g2mgt"
