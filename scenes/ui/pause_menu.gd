@@ -13,6 +13,7 @@ var in_tween: Tween
 var out_tween: Tween
 var in_tween_duration: float = 0.30
 
+
 func _ready() -> void:
 	get_tree().paused = true
 	resume_button.pressed.connect(on_resume_button_pressed)

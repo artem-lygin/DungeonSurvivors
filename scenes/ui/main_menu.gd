@@ -8,7 +8,6 @@ extends CanvasLayer
 
 const OPTIONS_SCENE = preload(Paths.OPTIONS_MENU_SCREEN)
 
-
 func _ready() -> void:
 	play_button.pressed.connect(on_play_button_pressed)
 	meta_store_button.pressed.connect(on_meta_store_button_pressed)

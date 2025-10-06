@@ -16,3 +16,7 @@ const UPGRADE_SCREEN = "uid://8hf2b2lu8ro0"
 #region FILES
 const SAVE_PATH_FILE = "user://game.save"
 #endregion
+
+#region UI COMPONENTS SCENES
+const FLOATING_LABEL = "uid://d21q8jv0q7bxb"
+#endregion

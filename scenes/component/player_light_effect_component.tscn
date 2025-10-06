@@ -6,10 +6,33 @@
 [node name="PlayerLightEffectComponent" type="Node2D"]
 script = ExtResource("1_hhl7o")
 
-[node name="PlayerPointLight2D" type="PointLight2D" parent="."]
+[node name="PlayerPointLight2D" type="PointLight2D" parent="." groups=["player_light"]]
 unique_name_in_owner = true
 color = Color(1, 0.91644, 0.752752, 1)
-energy = 2.0
+range_layer_max = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.152941)
+shadow_filter = 1
+shadow_filter_smooth = 8.0
+texture = ExtResource("2_0wdrg")
+height = 24.0
+
+[node name="PlayerPointLight2D2" type="PointLight2D" parent="." groups=["player_light"]]
+unique_name_in_owner = true
+color = Color(1, 0.91644, 0.752752, 1)
+range_layer_max = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.152941)
+shadow_filter = 1
+shadow_filter_smooth = 8.0
+texture = ExtResource("2_0wdrg")
+height = 24.0
+
+[node name="PlayerPointLight2D3" type="PointLight2D" parent="." groups=["player_light"]]
+unique_name_in_owner = true
+color = Color(1, 0.91644, 0.752752, 1)
 range_layer_max = 2
 range_item_cull_mask = 3
 shadow_enabled = true

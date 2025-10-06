@@ -34,7 +34,7 @@ round_end_screen = ExtResource("2_blune")
 [node name="Vignette" parent="." instance=ExtResource("3_s17dp")]
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_ow5a4")]
-round_lasting = 60.0
+round_lasting = 360.0
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_l3cfh")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -104,12 +104,14 @@ position = Vector2(319, 180)
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.206038, 0.159192, 0.306695, 1)
+color = Color(0.11802279, 0.08670276, 0.18304488, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_th5th")
 
-[node name="UserInterface" type="Node2D" parent="." groups=["ui_layer"]]
+[node name="WorldOverlay" type="Node2D" parent="." groups=["world_overlay"]]
+
+[node name="UserInterface" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
 [node name="ArenaTimerUI" parent="UserInterface" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_6q06x")]
 arena_time_manager = NodePath("../../ArenaTimeManager")

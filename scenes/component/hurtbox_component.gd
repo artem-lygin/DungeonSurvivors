@@ -6,7 +6,7 @@ signal hit
 
 @export var health_component: HealthComponent
 
-var floating_text_scene: PackedScene = preload("res://scenes/ui/floating_text.tscn")
+var floating_text_scene: PackedScene = preload(Paths.FLOATING_LABEL)
 
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func on_area_entered(other_area: Area2D) -> void:
 	health_component.damage(hitbox_component.damage_amount)
 
 	var floating_text: Node2D = floating_text_scene.instantiate() as Node2D
-	GameUtils.get_ui().add_child(floating_text)
+	GameUtils.get_world_overlay().add_child(floating_text)
 
 	floating_text.global_position = global_position + (Vector2.UP * 16)
 	floating_text.pop_damage_text(str(hitbox_component.damage_amount).pad_decimals(0))
