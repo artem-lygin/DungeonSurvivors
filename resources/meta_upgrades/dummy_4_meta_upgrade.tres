@@ -4,9 +4,8 @@
 
 [resource]
 script = ExtResource("1_1njmt")
-id = "angels_promise"
-title = "Angel's promise"
-rarity = 1
+id = "michael_betrayal"
+title = "Maichael's betreyal"
 description = "Dodge chanse increased by 10%"
 resource_cost = 75
 max_quantity = 5

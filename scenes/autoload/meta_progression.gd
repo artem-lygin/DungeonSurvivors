@@ -2,7 +2,7 @@ extends Node
 
 signal meta_currency_updated
 
-const SAVE_PATH_FILE = "user://game.save"
+const SAVE_PATH_FILE = Paths.SAVE_PATH_FILE
 
 var save_data: Dictionary = {
 	"meta_upgrade_currency": 0,
@@ -16,10 +16,16 @@ var save_data: Dictionary = {
 
 var is_override_debug_mode: bool = ProjectSettings.get_setting("game/debug/meta_progress/override_meta_currency_balance")
 var debug_log: bool = ProjectSettings.get_setting("game/debug/meta_progress/debug_log")
+var is_fresh_start: bool = ProjectSettings.get_setting("game/debug/meta_progress/fresh_start")
+
 
 func _ready() -> void:
 	GameEvents.expirience_vial_collected.connect(on_experience_collected)
 	load_save_file()
+
+	if is_fresh_start:
+		reset_meta_upgrades()
+		MetaProgression.set_meta_currency(0)
 
 
 func set_meta_currency(amount: int) -> void:

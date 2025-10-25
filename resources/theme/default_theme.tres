@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://ekd1t45xgbw6"]
+[gd_resource type="Theme" load_steps=31 format=3 uid="uid://ekd1t45xgbw6"]
 
 [ext_resource type="Texture2D" uid="uid://wgydv3laewhn" path="res://assets/ui/ui.png" id="1_k5ytv"]
 [ext_resource type="Texture2D" uid="uid://cxxsufaq2cgs4" path="res://assets/ui/hslider_handle_regular.png" id="5_0brrd"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cnpcr42up6hx6" path="res://assets/ui/hslider_handle_hover.png" id="7_3bitw"]
 [ext_resource type="StyleBox" uid="uid://cbe7jqbh7v5uv" path="res://resources/theme/rarity_labels/stylebox_common.tres" id="7_bblwh"]
 [ext_resource type="FontFile" uid="uid://b7qw6tba74eyi" path="res://resources/theme/fonts/Kingdom-Regular.otf" id="8_immc1"]
+[ext_resource type="Texture2D" uid="uid://lqkl1m2jcvo" path="res://assets/ui/vscroll-grabber.png" id="9_immc1"]
+[ext_resource type="Texture2D" uid="uid://cdre32ofo2yvj" path="res://assets/ui/vscroll-grabber-highlight.png" id="10_71o3v"]
+[ext_resource type="Texture2D" uid="uid://dke8sinqf81ge" path="res://assets/ui/vscroll-scroll.png" id="11_3bitw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5ytv"]
 texture = ExtResource("1_k5ytv")
@@ -145,6 +148,59 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 region_rect = Rect2(7, 104, 54, 12)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3apg"]
+texture = ExtResource("9_immc1")
+texture_margin_left = 5.0
+texture_margin_top = 14.0
+texture_margin_right = 5.0
+texture_margin_bottom = 14.0
+expand_margin_left = 3.0
+expand_margin_right = 1.0
+region_rect = Rect2(0, 0, 14, 47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ub3aj"]
+texture = ExtResource("10_71o3v")
+texture_margin_left = 5.0
+texture_margin_top = 14.0
+texture_margin_right = 5.0
+texture_margin_bottom = 14.0
+expand_margin_left = 3.0
+expand_margin_right = 1.0
+region_rect = Rect2(0, 0, 14, 47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_npf5h"]
+texture = ExtResource("10_71o3v")
+texture_margin_left = 5.0
+texture_margin_top = 14.0
+texture_margin_right = 5.0
+texture_margin_bottom = 14.0
+expand_margin_left = 3.0
+expand_margin_right = 1.0
+region_rect = Rect2(0, 0, 14, 47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3eut"]
+texture = ExtResource("11_3bitw")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+expand_margin_left = 3.0
+expand_margin_right = 1.0
+region_rect = Rect2(-3, 0, 14, 46)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t3eut"]
+load_path = "res://.godot/imported/vscroll-scroll.png-ade0055160eb68bf514bee33105f7404.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tj746"]
+texture = SubResource("CompressedTexture2D_t3eut")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+expand_margin_left = 3.0
+expand_margin_right = 1.0
+region_rect = Rect2(-3, 0, 14, 46)
+
 [resource]
 default_font = ExtResource("6_bblwh")
 default_font_size = 16
@@ -192,3 +248,8 @@ TitleLabel/constants/shadow_offset_x = 0
 TitleLabel/constants/shadow_offset_y = 1
 TitleLabel/font_sizes/font_size = 20
 TitleLabel/fonts/font = ExtResource("8_immc1")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_r3apg")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_ub3aj")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_npf5h")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_t3eut")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxTexture_tj746")

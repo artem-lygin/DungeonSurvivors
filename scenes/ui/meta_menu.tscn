@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7ffluwflkug4"]
+[gd_scene load_steps=18 format=3 uid="uid://c7ffluwflkug4"]
 
 [ext_resource type="Script" uid="uid://bwg5ivqbvfskd" path="res://scenes/ui/meta_menu.gd" id="1_3vbab"]
 [ext_resource type="PackedScene" uid="uid://6o3475xagob5" path="res://scenes/ui/meta_upgrade_card.tscn" id="2_5fsrx"]
@@ -8,7 +8,11 @@
 [ext_resource type="Resource" uid="uid://bho4uycrtx05i" path="res://resources/meta_upgrades/dummy_2_meta_upgrade.tres" id="6_tykgm"]
 [ext_resource type="Resource" uid="uid://snjml7e1ryhy" path="res://resources/meta_upgrades/dummy_3_meta_upgrade.tres" id="7_orst0"]
 [ext_resource type="PackedScene" uid="uid://v7jxei0welef" path="res://scenes/ui/sound_button.tscn" id="7_w0aax"]
+[ext_resource type="Resource" uid="uid://djnop4nfhfj8j" path="res://resources/meta_upgrades/dummy_5_meta_upgrade.tres" id="8_t6ful"]
 [ext_resource type="PackedScene" uid="uid://yyt406k35ev5" path="res://scenes/component/counter_ui_component.tscn" id="9_orst0"]
+[ext_resource type="Resource" uid="uid://dguk2kcbnkkel" path="res://resources/meta_upgrades/dummy_4_meta_upgrade.tres" id="9_ucgv2"]
+[ext_resource type="Resource" uid="uid://bpop0pi4vsitw" path="res://resources/meta_upgrades/dummy_6_meta_upgrade.tres" id="10_0jbv7"]
+[ext_resource type="Resource" uid="uid://rjbhue2faymr" path="res://resources/meta_upgrades/dummy_7_meta_upgrade.tres" id="11_es6b1"]
 
 [sub_resource type="Animation" id="Animation_bd1lb"]
 length = 0.001
@@ -69,7 +73,7 @@ process_mode = 3
 layer = 3
 script = ExtResource("1_3vbab")
 meta_upgrade_card_scene = ExtResource("2_5fsrx")
-meta_upgrades_pool = Array[ExtResource("3_xe1at")]([ExtResource("4_tykgm"), ExtResource("5_xe1at"), ExtResource("7_orst0"), ExtResource("6_tykgm")])
+meta_upgrades_pool = Array[ExtResource("3_xe1at")]([ExtResource("4_tykgm"), ExtResource("5_xe1at"), ExtResource("7_orst0"), ExtResource("6_tykgm"), ExtResource("8_t6ful"), ExtResource("9_ucgv2"), ExtResource("10_0jbv7"), ExtResource("11_es6b1")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -86,35 +90,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.12549, 0.0313726, 0.0862745, 0.705882)
+color = Color(0.12549, 0.0313726, 0.0862745, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ContentContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 50.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_top = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainerCards" type="MarginContainer" parent="ContentContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/separation = 12
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 4
 
-[node name="MarginContainerCards" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ContentContainer/MarginContainerCards"]
 layout_mode = 2
-size_flags_vertical = 0
 
-[node name="GridContainerCards" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainerCards"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/MarginContainerCards/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 12
+
+[node name="GridContainerCards" type="GridContainer" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 light_mask = 0
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
 columns = 4
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
+[node name="MetaUpgradeCard" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard2" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard3" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard4" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard5" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard6" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard7" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard8" parent="ContentContainer/MarginContainerCards/ScrollContainer/MarginContainer/GridContainerCards" instance=ExtResource("2_5fsrx")]
+layout_mode = 2
+
+[node name="HeaderBar" type="ReferenceRect" parent="."]
 light_mask = 0
 custom_minimum_size = Vector2(0, 50)
 anchors_preset = 10
@@ -123,7 +157,7 @@ grow_horizontal = 2
 size_flags_vertical = 0
 border_width = 0.0
 
-[node name="MarginContainerTitle" type="MarginContainer" parent="ReferenceRect"]
+[node name="MarginContainerTitle" type="MarginContainer" parent="HeaderBar"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -135,13 +169,13 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 12
 
-[node name="Label" type="Label" parent="ReferenceRect/MarginContainerTitle"]
+[node name="Label" type="Label" parent="HeaderBar/MarginContainerTitle"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"TitleLabel"
 text = "Upgrades store"
 
-[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect"]
+[node name="MarginContainer" type="MarginContainer" parent="HeaderBar"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -151,20 +185,20 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderBar/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="BackButton" parent="ReferenceRect/MarginContainer/HBoxContainer" instance=ExtResource("7_w0aax")]
+[node name="BackButton" parent="HeaderBar/MarginContainer/HBoxContainer" instance=ExtResource("7_w0aax")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
 
-[node name="BalanceCounter" parent="ReferenceRect/MarginContainer/HBoxContainer" instance=ExtResource("9_orst0")]
+[node name="BalanceCounter" parent="HeaderBar/MarginContainer/HBoxContainer" instance=ExtResource("9_orst0")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ResetButton" parent="ReferenceRect/MarginContainer/HBoxContainer" instance=ExtResource("7_w0aax")]
+[node name="ResetButton" parent="HeaderBar/MarginContainer/HBoxContainer" instance=ExtResource("7_w0aax")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10

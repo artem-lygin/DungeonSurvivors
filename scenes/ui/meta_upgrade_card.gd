@@ -71,7 +71,7 @@ func update_ui_progress() -> void:
 
 	if meta_upgrade.resource_cost > current_meta_currency_amount:
 		purchase_button.disabled = true
-		purchase_button.text = "Not enough exp"
+		purchase_button.text = "Not enough gold"
 
 	if meta_upgrade_owned_amount < meta_upgrade.max_quantity and meta_upgrade.resource_cost <= current_meta_currency_amount:
 		purchase_button.disabled = false

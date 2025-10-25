@@ -1,10 +1,11 @@
 extends Node
 
-@export var round_end_screen: PackedScene
+#@export var round_end_screen: PackedScene
 
 @onready var player_scene: CharacterBody2D = $%Player
 
-const PAUSE_MENU = preload("res://scenes/ui/pause_menu.tscn")
+const ROUND_END_SCREEN = preload(Paths.ROUND_END_SCREEN)
+const PAUSE_MENU = preload(Paths.PAUSE_MENU_SCREEN)
 
 func _ready() -> void:
 	#Listen to "died" signal from HealthComponent in the player scene
@@ -20,7 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Show Round End Scene and call "set_defeat" method from the scene
 func _on_player_death() -> void:
-	var round_end_screen_instance: Node = round_end_screen.instantiate()
+	var round_end_screen_instance: Node = ROUND_END_SCREEN.instantiate()
 	add_child(round_end_screen_instance)
 	round_end_screen_instance.set_defeat()
 	MetaProgression.save_to_file()

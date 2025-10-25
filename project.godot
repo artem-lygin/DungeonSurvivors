@@ -70,7 +70,8 @@ debug/meta_progress/override_meta_currency_balance=false
 demo/max_is_cool=true
 debug/meta_progress/debug_log=false
 debug/meta_progress/debug_draw=false
-debug/player/debug_draw=true
+debug/player/debug_draw=false
+debug/meta_progress/fresh_start=true
 
 [gui]
 

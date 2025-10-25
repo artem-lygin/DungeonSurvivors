@@ -18,6 +18,9 @@ var debug_draw: bool = ProjectSettings.get_setting("game/debug/meta_progress/deb
 
 
 func _ready() -> void:
+	for child in grid_container_cards.get_children():
+		child.queue_free()
+
 	MetaProgression.meta_currency_updated.connect(update_ui)
 	reset_button.pressed.connect(reset_upgrades)
 	back_button.pressed.connect(on_back_button_pressed)
@@ -76,7 +79,7 @@ func update_ui(balance: int) -> void:
 	balance_counter.set_couner_value(balance)
 
 
-## TODO make Back button work as "Back to any_scene"
+## TODO make Back button work as "Back to source_scene"
 func on_back_button_pressed() -> void:
 	ScreenTransition.transition_to_scene(Paths.MAIN_MENU_SCENE)
 
