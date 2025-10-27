@@ -1,6 +1,7 @@
 extends Node
 
-const SPAWN_RADIUS: int = 420
+# TODO modify spawn_radius going to be set from current resolution of viewport
+const SPAWN_RADIUS: int = 420 # Should be half of current viewport diagonal
 const DIFFICULTY_INCREASED_RATIO = 0.1
 
 @export var basic_enemy_scene: PackedScene
@@ -19,7 +20,8 @@ func _ready() -> void:
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 
 func get_spawn_position () -> Vector2: # Defining the plase of enemy spawn
-	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
+	var player: Node2D = GameUtils.get_player() as Node2D
+
 	if player == null: #safecheck
 		return Vector2.ZERO
 
@@ -28,8 +30,10 @@ func get_spawn_position () -> Vector2: # Defining the plase of enemy spawn
 
 	for i in 4: # for loop is not inclusive: i < 4
 		spawn_position =  player.global_position + (random_direction * SPAWN_RADIUS)
+		var additional_offset: Vector2 = random_direction * 20
 		# Querying the *direct space state* (current state of physics objects in the game)
-		var query_parameters: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1 << 0)
+		var query_parameters: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(player.global_position,\
+		spawn_position + additional_offset, 1 << 0)
 		var result: Dictionary = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 
 		if result.is_empty():

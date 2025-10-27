@@ -15,7 +15,12 @@ run/main_scene="uid://dngm4qevppc5f"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Angels&Deamons"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.12549, 0.0313726, 0.0862745, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://dygguhil3dlc2"
+config/icon="uid://dygguhil3dlc2"
+config/windows_native_icon="res://icon.ico"
 
 [audio]
 
@@ -39,11 +44,13 @@ gdscript/warnings/untyped_declaration=1
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+window/size/mode.debug=0
 
 [editor]
 
@@ -71,7 +78,7 @@ demo/max_is_cool=true
 debug/meta_progress/debug_log=false
 debug/meta_progress/debug_draw=false
 debug/player/debug_draw=false
-debug/meta_progress/fresh_start=true
+debug/meta_progress/fresh_start=false
 
 [gui]
 
@@ -128,4 +135,5 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 2d/snap/snap_2d_transforms_to_pixel=true

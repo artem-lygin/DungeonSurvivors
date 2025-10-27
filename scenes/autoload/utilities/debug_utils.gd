@@ -1,3 +1,4 @@
 extends Node
 
-var debug_mode: bool = true
+# TODO move debug switcher to ProjectSettings
+var debug_mode: bool = false
