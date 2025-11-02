@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfsoa5nvbw10e"]
+[gd_scene load_steps=5 format=3 uid="uid://cfsoa5nvbw10e"]
 
 [ext_resource type="Script" uid="uid://bti4w6sld076b" path="res://scenes/manager/enemy_manager.gd" id="1_jybml"]
 [ext_resource type="PackedScene" uid="uid://oi7cn7ov62qr" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="2_bortd"]
 [ext_resource type="PackedScene" uid="uid://d07ey81a485o1" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="3_8jsg4"]
+[ext_resource type="PackedScene" uid="uid://cp03lpbncwd5h" path="res://scenes/game_object/bat_enemy/bat_enemy.tscn" id="3_fx4ap"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_jybml")
-basic_enemy_scene = ExtResource("2_bortd")
-wizard_enemy_scene = ExtResource("3_8jsg4")
+enemies_pool = Dictionary[String, PackedScene]({
+"bat": ExtResource("3_fx4ap"),
+"rat": ExtResource("2_bortd"),
+"wizard": ExtResource("3_8jsg4")
+})
+enemies_weights_table = Dictionary[String, int]({
+"bat": 25,
+"rat": 100,
+"wizard": 50
+})
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

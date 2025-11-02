@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c15x3unpqnu58" path="res://scenes/component/velocity_component.tscn" id="2_qct4f"]
 [ext_resource type="PackedScene" uid="uid://b7dckva28e14j" path="res://scenes/component/death_component.tscn" id="2_qgqx6"]
 [ext_resource type="PackedScene" uid="uid://d0q06wgqo7ckn" path="res://scenes/component/hurtbox_component.tscn" id="3_qct4f"]
-[ext_resource type="Texture2D" uid="uid://ct7iudjtfrtx8" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="4_rquut"]
+[ext_resource type="Texture2D" uid="uid://ct7iudjtfrtx8" path="res://assets/enemies/wizards/wizard_enemy.png" id="4_rquut"]
 [ext_resource type="PackedScene" uid="uid://cfcqb6lxviidl" path="res://scenes/component/vial_drop_component.tscn" id="5_rquut"]
 [ext_resource type="PackedScene" uid="uid://bfghli8mm2v3v" path="res://scenes/component/hit_flash_component.tscn" id="6_74qiw"]
 [ext_resource type="Shader" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gdshader" id="7_sjtyn"]
@@ -110,15 +110,22 @@ radius = 5.0
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_qct4f")
+max_health = 60
+base_weight = 25
+base_speed = 60
+base_acceleration = 40.0
 
 [node name="HitAudioComponent" parent="." node_paths=PackedStringArray("hurtbox_component") instance=ExtResource("2_h4ano")]
+unique_name_in_owner = true
 hurtbox_component = NodePath("../HurtboxComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "enemy_sprite") instance=ExtResource("2_qgqx6")]
+unique_name_in_owner = true
 health_component = NodePath("../HealthComponent")
 enemy_sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_865ah")]
+unique_name_in_owner = true
 max_health = 60.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_qct4f")]
@@ -134,6 +141,7 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_qct4f")]
+unique_name_in_owner = true
 position = Vector2(0, -7)
 health_component = NodePath("../HealthComponent")
 
@@ -148,6 +156,7 @@ libraries = {
 autoplay = "walk"
 
 [node name="Visuals" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_74qiw")

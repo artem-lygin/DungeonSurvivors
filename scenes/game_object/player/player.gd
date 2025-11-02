@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var hit_stream_player: AudioStreamPlayer2D = $%HitAudioPlayer2D
 @onready var walk_audio_stream_player_2d: AudioStreamPlayer2D = $%WalkAudioStreamPlayer2D
 
+var debug_draw: bool = ProjectSettings.get_setting("game/debug/player/debug_draw")
 
 var number_colliding_bodies: int = 0
 var base_speed: float
@@ -34,7 +35,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if DebugUtils.debug_mode:
+	if debug_draw:
 		queue_redraw()
 	var movement_vector: Vector2 = get_movement_vector() # Raw vectors
 	var direction: Vector2 = movement_vector.normalized() # Normalisation forces movement vectors be 1
@@ -62,7 +63,7 @@ func _process(delta: float) -> void:
 	# Flipping the Sprite2D
 	var move_sign: Variant = sign(movement_vector.x)
 	if move_sign != 0:
-		visuals_node.scale = Vector2(move_sign, 1)
+		visuals_node.scale = Vector2(- move_sign, 1)
 
 
 func get_movement_vector() -> Vector2:
@@ -114,7 +115,7 @@ func play_footstep() -> void:
 	walk_audio_stream_player_2d.play()
 
 func _draw() -> void:
-	if DebugUtils.debug_mode:
-		draw_line(Vector2.ZERO, velocity*1, Color.ORANGE, 1)
-	else:
+	if not debug_draw:
 		return
+
+	draw_line(Vector2.ZERO, velocity*1, Color.ORANGE, 1)

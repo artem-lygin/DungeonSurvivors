@@ -4,20 +4,27 @@ extends Node
 const SPAWN_RADIUS: int = 420 # Should be half of current viewport diagonal
 const DIFFICULTY_INCREASED_RATIO = 0.1
 
-@export var basic_enemy_scene: PackedScene
-@export var wizard_enemy_scene: PackedScene
 @export var arena_time_manager: Node
+
+@export var enemies_pool: Dictionary[String, PackedScene]
+@export var enemies_weights_table: Dictionary[String, int]
 
 @onready var enemy_spawn_timer: Timer = $Timer
 
 var enemy_spawn_time: float = 0
 var enemy_table: WeightedTable = WeightedTable.new()
 
+
 func _ready() -> void:
-	enemy_table.add_item(basic_enemy_scene, 10)
+	update_enemy_pool("rat")
 	enemy_spawn_time = enemy_spawn_timer.wait_time
 	enemy_spawn_timer.timeout.connect(on_timer_timeout)
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
+
+
+func update_enemy_pool(type: String) -> void:
+		enemy_table.add_item(enemies_pool[type], enemies_weights_table[type])
+
 
 func get_spawn_position () -> Vector2: # Defining the plase of enemy spawn
 	var player: Node2D = GameUtils.get_player() as Node2D
@@ -69,7 +76,9 @@ func on_arena_difficulty_increased(arena_difficulty: int) -> void:
 	enemy_spawn_timer.wait_time = enemy_spawn_time - time_off
 
 	if arena_difficulty == 6:
-		enemy_table.add_item(wizard_enemy_scene, 20)
+		enemy_table.add_item(enemies_pool["wizard"], enemies_weights_table["wizard"])
+	elif arena_difficulty == 12:
+		enemy_table.add_item(enemies_pool["bat"], enemies_weights_table["bat"])
 
 	#print("⏰ Enemy Spawn Timer is ", enemy_spawn_timer.wait_time)
 	enemy_spawn_timer.start()

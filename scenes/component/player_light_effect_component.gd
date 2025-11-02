@@ -2,7 +2,7 @@ extends Node2D
 
 signal player_light_disabled(state: bool)
 
-const PLAYER_LIGHT_MIN_RADIUS: int = 32
+const PLAYER_LIGHT_MIN_RADIUS: int = 320
 const PLAYER_LIGHT_MAX_RADIUS: int = 480
 
 @onready var player_light_source_1: PointLight2D = %PlayerPointLight2D

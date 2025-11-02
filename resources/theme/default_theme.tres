@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=31 format=3 uid="uid://ekd1t45xgbw6"]
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://ekd1t45xgbw6"]
 
 [ext_resource type="Texture2D" uid="uid://wgydv3laewhn" path="res://assets/ui/ui.png" id="1_k5ytv"]
 [ext_resource type="Texture2D" uid="uid://cxxsufaq2cgs4" path="res://assets/ui/hslider_handle_regular.png" id="5_0brrd"]
@@ -114,6 +114,16 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(104, 2, 98, 8)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71o3v"]
+bg_color = Color(0.12549, 0.0313726, 0.0862745, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bitw"]
+bg_color = Color(0.77254903, 0.31764707, 0.44705883, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltdrk"]
 content_margin_left = 10.0
 content_margin_top = 16.0
@@ -223,6 +233,11 @@ HSlider/icons/grabber_highlight = ExtResource("7_3bitw")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_0brrd")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_71o3v")
 HSlider/styles/slider = SubResource("StyleBoxTexture_immc1")
+HealthBar/base_type = &"ProgressBar"
+HealthBar/colors/font_outline_color = Color(0.12549, 0.0313726, 0.0862745, 1)
+HealthBar/constants/outline_size = 1
+HealthBar/styles/background = SubResource("StyleBoxFlat_71o3v")
+HealthBar/styles/fill = SubResource("StyleBoxFlat_3bitw")
 Label/colors/font_color = Color(0.972549, 0.901961, 0.815686, 1)
 Label/colors/font_outline_color = Color(0.12549, 0.0313726, 0.0862745, 1)
 Label/constants/line_spacing = -2
